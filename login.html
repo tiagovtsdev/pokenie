@@ -12,19 +12,12 @@
 </head>
 <body>
     <header>
-        <img src="logoPokénie_2.png" alt="Pokénie logo">
+        <div class="icon"><img src="favicon.ico" alt="Pokénie logo"></div>
         <h1>Pokénie</h1>
         <h3>A successor to the Pokédex... and better</h3>
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="">Search Pokémons</a>
-            <a href="">My Favorites</a>
-            <a href="./userSupport.html">User Support</a>
-            <a href="./login.html">Login</a>
-            <a href="./register.html">Register</a>
-        </nav>
     </header>
     <main>
+        <div class="login">
         <div class="welcome"><h1>Welcome Back, Poke fan!</div>
             <div class="field">
                 <label for="email">Email: </label>
@@ -36,7 +29,9 @@
             </div>
             <div class="field">
                 <button onclick="fazerLogin()">Enter</button>
-                <a href="./userSupport.html" class="forgot_password">Forgot my password</a>
+                
+            </div>
+            <div class="field"><h4><a href="./userSupport.html" class="forgot_password">Forgot my password</a></h4>
             </div>
         </div>
     </main>

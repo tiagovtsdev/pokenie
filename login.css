@@ -37,5 +37,19 @@ body {
 footer{
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login{
+    
+    height: 400px;
+    width: 500px;
+    border: 1px solid #ff000f;
+    border-radius: 8px;
+    color: #000;
+    background-color: #ccc;
 }
