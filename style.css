@@ -1,23 +1,5 @@
-body{
-    background-color: #818181;
+* {
     margin: 0;
-    
-    height: 100vh;           
-    display: flex;           
-    justify-content: center; 
-      
-    
-}
-
-.box1{
-    height: 100px;
-    width: 350px;
-    border: 1px solid #ff000f;
-    border-radius: 8px;
-    color: #000;
-    background-color: #ccc;
-              
-    display: flex;           
-    justify-content: center;
-   align-items: center;
+    padding: 0;
+    box-sizing: border-box;
 }
