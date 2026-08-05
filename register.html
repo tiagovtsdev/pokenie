@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokénie</title>
+    <title>Register</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -24,6 +24,28 @@
             <a href="./register.html">Register</a>
         </nav>
     </header>
+    <main>
+        <div>
+            <div class="welcome">
+                <h1>Create your account!</h1>
+            </div>
+            <div class="welcome">
+                <h3>Discovery and save to your pokémons when creating your account.</h3>
+            </div>
+            <div class="field">
+                <label for="email">Email: </label>
+                <input id="email" type="email" placeholder="Insert your email" required>
+            </div>
+            <div class="field">
+                <label for="senha">Passowrd: </label>
+                <input id="senha" type="password" placeholder="Insert your password" required> 
+            </div>
+            <div class="field">
+            <button onclick="fazerLogin()">Create now</button>
+            <p id="mensagem"></p>
+            </div>
+        </div>
+    </main>
     <footer>
         &copy; 2026 The Pokénie Association. All rights reserved.
     </footer>

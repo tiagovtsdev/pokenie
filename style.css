@@ -13,3 +13,9 @@
 body {
     font-family: var(--fonte-principal);
 }
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
