@@ -1,3 +1,13 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f3f6fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+logi
+
 .welcome{
     display: flex;
     align-items: center;
