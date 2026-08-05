@@ -1,12 +1,3 @@
-body{
-    font-family: 'Poppins', sans-serif;
-    background: #f3f6fb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-logi
 
 .welcome{
     display: flex;
@@ -19,7 +10,6 @@ logi
     align-items: center;
     justify-content: center;
     margin: 8px;
-    
     gap: 2px;
 }
 
