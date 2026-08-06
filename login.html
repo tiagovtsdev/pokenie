@@ -12,7 +12,11 @@
 </head>
 <body>
     <header>
+<<<<<<< HEAD
         <div class="icon"><img src="assets/logoPokénie_2.png" alt="Pokénie logo"></div>
+=======
+        <img src="logoPokénie_2.png" alt="Pokénie logo">
+>>>>>>> 3af3da07d880117012d62af79b48fe3d61b62844
         <h1>Pokénie</h1>
         <h3>A successor to the Pokédex... and better</h3>
         <nav>
@@ -25,39 +29,40 @@
         </nav>
     </header>
     <main>
-        <div class="login">
-        <div class="welcome"><h1>Welcome Back, nickname!</div>
-            <div class="field">
-                <label for="email">Email: </label><br>
-                <input id="email" type="email" placeholder="Insert your email" required>
-            </div>
-            <div class="field">
-                <label for="senha">Password: </label>
-                <input id="senha" type="password" placeholder="Insert your password" required>
-                <button type="button" id="toggleSenha">Show</button>
+        <form>
+            <div class="login">
+            <div class="icon"><img src="favicon.ico" alt="Pokénie logo"></div>
+            <div class="welcome"><h1>Welcome Back</h1></div>
+            <p class="signup-text">Don't have an account yet? <a href="./register.html">Sign Up</a></p>
+                <div class="field">
+                    <label for="email">Email: </label><br>
+                    <input id="email" type="email" placeholder="Insert your email" required>
+                </div>
+                <div class="field">
+                    <label for="senha">Password: </label>
+                    <input id="senha" type="password" placeholder="Insert your password" required>
+                    <button type="button" id="toggleSenha">Show</button>
 
-                <script>
-                    const campoSenha = document.getElementById('senha');
-                    const botaoToggle = document.getElementById('toggleSenha');
+                    <script>
+                        const campoSenha = document.getElementById('senha');
+                        const botaoToggle = document.getElementById('toggleSenha');
 
-                    botaoToggle.addEventListener('click', function() {
-                        if (campoSenha.type === 'password') {
-                            campoSenha.type = 'text';
-                            botaoToggle.textContent = 'Hide';
-                        } else {
-                            campoSenha.type = 'password';
-                            botaoToggle.textContent = 'Show';
-                        }
-                    })
-                </script>
-            </div>
-            <div class="field">
-                <button onclick="fazerLogin()">Enter</button>
-                
-            </div>
+                        botaoToggle.addEventListener('click', function() {
+                            if (campoSenha.type === 'password') {
+                                campoSenha.type = 'text';
+                                botaoToggle.textContent = 'Hide';
+                            } else {
+                                campoSenha.type = 'password';
+                                botaoToggle.textContent = 'Show';
+                            }
+                        })
+                    </script>
+                </div>
+            <button type="submit" class="entra">Enter</button>
             <div class="field"><h4><a href="./userSupport.html" class="forgot_password">Forgot my password</a></h4>
             </div>
         </div>
+        </form>
     </main>
     <footer>
         &copy; 2026 The Pokénie Association. All rights reserved.
