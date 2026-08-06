@@ -15,10 +15,18 @@
         <div class="icon"><img src="favicon.ico" alt="Pokénie logo"></div>
         <h1>Pokénie</h1>
         <h3>A successor to the Pokédex... and better</h3>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="">Search Pokémons</a>
+            <a href="">My Favorites</a>
+            <a href="./userSupport.html">User Support</a>
+            <a href="./login.html">Login</a>
+            <a href="./register.html">Register</a>
+        </nav>
     </header>
     <main>
         <div class="login">
-        <div class="welcome"><h1>Welcome Back, Poke fan!</div>
+        <div class="welcome"><h1>Welcome Back, nickname!</div>
             <div class="field">
                 <label for="email">Email: </label><br>
                 <input id="email" type="email" placeholder="Insert your email" required>
@@ -26,6 +34,22 @@
             <div class="field">
                 <label for="senha">Password: </label>
                 <input id="senha" type="password" placeholder="Insert your password" required>
+                <button type="button" id="toggleSenha">Show</button>
+
+                <script>
+                    const campoSenha = document.getElementById('senha');
+                    const botaoToggle = document.getElementById('toggleSenha');
+
+                    botaoToggle.addEventListener('click', function() {
+                        if (campoSenha.type === 'password') {
+                            campoSenha.type = 'text';
+                            botaoToggle.textContent = 'Hide';
+                        } else {
+                            campoSenha.type = 'password';
+                            botaoToggle.textContent = 'Show';
+                        }
+                    })
+                </script>
             </div>
             <div class="field">
                 <button onclick="fazerLogin()">Enter</button>

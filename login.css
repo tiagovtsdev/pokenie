@@ -53,3 +53,11 @@ footer{
     color: #000;
     background-color: #ccc;
 }
+
+nav a {
+    text-decoration: none;
+}
+
+.forgot_password {
+    text-decoration: none;
+}

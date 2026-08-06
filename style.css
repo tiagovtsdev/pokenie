@@ -19,3 +19,7 @@ footer{
     align-items: center;
     justify-content: center
 }
+
+nav a {
+  text-decoration: none;
+}
