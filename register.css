@@ -4,17 +4,11 @@
     box-sizing: border-box;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
     --fonte-principal: "DM Sans", sans-serif;
-    --fonte-secundaria: "Cabin", sans-serif;
+    --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
 
 body {
@@ -45,6 +39,6 @@ nav a {
     text-decoration: none;
 }
 
-.h3 a {
+h3 {
     font-family: var(--fonte-secundaria);
 }
