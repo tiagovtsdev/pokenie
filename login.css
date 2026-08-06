@@ -8,6 +8,7 @@
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
     --fonte-principal: "DM Sans", sans-serif;
+    --fonte-secundaria: "Cabin", sans-serif;
 }
 
 body {
@@ -95,4 +96,8 @@ form{
   padding: 20px;
   font-size: 15px;
 
+}
+
+.signup-text a {
+    text-decoration: none;
 }
