@@ -86,6 +86,26 @@ p {
     
 }
 
+.toggleSenha {
+    width: 15%;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.toggleSenha:hover {
+    background-color: var(--cor-secundaria);
+}
+
+.toggleSenha:active {
+    background-color: var(--cor-secundaria);
+}
+
 .entra {
     width: 100%;
     padding: 14px;
