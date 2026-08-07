@@ -44,10 +44,10 @@ footer {
 .login {
     height: 460px;
     width: 100%;
-    background-color: #cccccc; 
+    background-color: #dfd4df;
     color: #000;
-    border: 1px solid var(--cor-secundaria);     
-    border-radius: 8px;
+    border: 3px solid var(--cor-secundaria);     
+    border-radius: 10px;
     padding: 30px;
     max-width: 400px;         
     box-sizing: border-box;
