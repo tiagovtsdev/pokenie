@@ -15,13 +15,13 @@ body {
     font-family: var(--fonte-principal);
 }
 
-.welcome{
+.welcome {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.field{
+.field {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,19 +29,19 @@ body {
     gap: 2px;
 }
 
-footer{
+footer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.icon{
+
+.icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
 }
-.login{
+
+.login {
     height: 460px;
     width: 100%;
     background-color: #cccccc; 
@@ -55,23 +55,38 @@ footer{
 
 nav a {
     text-decoration: none;
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-secundaria);
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: var(--cor-primaria);
 }
 
 .forgot_password {
     text-decoration: none;
+    color: var(--cor-primaria);
 }
-h1{
+
+.forgot_password:hover {
+    color: var(--cor-secundaria);
+}
+
+h1 {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 8px
 }
-p{
+
+p {
     display: flex;
     align-items: center;
     justify-content: center;
     
 }
-.entra{
+
+.entra {
     width: 100%;
     padding: 14px;
     background-color: var(--cor-primaria);
@@ -82,12 +97,14 @@ p{
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
-    transition: background-color 0.2s;
-    
-     
+    transition: background-color 0.2s; 
 }
 
-form{
+.entra:hover {
+    background-color: var(--cor-secundaria);
+}
+
+form {
   display: flex;
   flex-direction: column; 
   align-items: center;    
@@ -100,8 +117,18 @@ form{
 
 .signup-text a {
     text-decoration: none;
+    color: var(--cor-primaria);
+}
+
+.signup-text a:hover {
+    color: var(--cor-secundaria);
 }
 
 h3 {
     font-family: var(--fonte-secundaria);
+}
+
+.copyright {
+    font-style: oblique;
+    font-weight: bold;
 }

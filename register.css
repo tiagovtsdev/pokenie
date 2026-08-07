@@ -15,7 +15,7 @@ body {
     font-family: var(--fonte-principal);
 }
 
-footer{
+footer {
     display: flex;
     align-items: center;
     justify-content: center
@@ -37,8 +37,20 @@ footer{
 
 nav a {
     text-decoration: none;
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-secundaria);
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: var(--cor-primaria);
 }
 
 h3 {
     font-family: var(--fonte-secundaria);
+}
+
+.copyright {
+    font-style: oblique;
+    font-weight: bold;
 }
