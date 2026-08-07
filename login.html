@@ -30,7 +30,20 @@
         <form>
             <div class="login">
             <div class="icon"><img src="assets/favicon.ico" alt="Pokénie logo"></div>
-            <div class="welcome"><h1>Welcome Back</h1></div>
+            <div class="welcome"><h1 id="welcome">Loading...</h1></div>
+            <script>
+                const data = new Date();
+                const hora = data.getHours();
+                const elemento = document.getElementById('welcome');
+
+                if (hora >= 6 && hora < 12) {
+                    elemento.innerHTML = "Good Morning!";
+                } else if (hora >= 12 && hora < 18) {
+                    elemento.innerHTML = "Good Afternoon!";
+                } else {
+                    elemento.innerHTML = "Good Night!"
+                }
+            </script>
             <p class="signup-text">Don't have an account yet? <a href="./register.html">Sign Up</a></p>
                 <div class="field">
                     <label for="email">Email: </label><br>
