@@ -138,6 +138,7 @@ form {
 .signup-text a {
     text-decoration: none;
     color: var(--cor-primaria);
+    margin-left: 5px;
 }
 
 .signup-text a:hover {

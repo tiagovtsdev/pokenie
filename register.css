@@ -42,13 +42,10 @@ nav a {
     font-size: 20px;
 }
 
-<<<<<<< Updated upstream
 nav a:hover {
     color: var(--cor-primaria);
 }
 
-=======
->>>>>>> Stashed changes
 h3 {
     font-family: var(--fonte-secundaria);
 }
