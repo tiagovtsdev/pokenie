@@ -39,6 +39,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .login {
@@ -143,6 +144,13 @@ form {
 
 .signup-text a:hover {
     color: var(--cor-secundaria);
+    text-decoration: underline;
+}
+
+input{
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
 }
 
 h3 {
