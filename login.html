@@ -46,14 +46,15 @@
             </script>
             <p class="signup-text">Don't have an account yet? <a class="signup-link" href="./register.html">Sign Up</a></p>
                 <div class="field">
-                    <label for="email">Email: </label><br>
+                    <label for="email">Email: </label>
                     <input id="email" type="email" placeholder="Email" required>
                 </div>
                 <div class="field">
                     <label for="senha">Password: </label>
-                    <input id="senha" type="password" placeholder="Password" required>
-                    <button type="button" id="toggleSenha" class="toggleSenha">Show</button>
-
+                    <div class="password-wrapper">
+                        <input id="senha" type="password" placeholder="Password" required>
+                        <img src="assets/hide.png" id="toggleSenha" class="toggleSenha" alt="Show Password">
+                    </div>
                     <script>
                         const campoSenha = document.getElementById('senha');
                         const botaoToggle = document.getElementById('toggleSenha');
@@ -61,10 +62,12 @@
                         botaoToggle.addEventListener('click', function() {
                             if (campoSenha.type === 'password') {
                                 campoSenha.type = 'text';
-                                botaoToggle.textContent = 'Hide';
+                                botaoToggle.src = 'assets/show.png';
+                                botaoToggle.alt = 'Hide Password';
                             } else {
                                 campoSenha.type = 'password';
-                                botaoToggle.textContent = 'Show';
+                                botaoToggle.src = 'assets/hide.png';
+                                botaoToggle.alt = 'Show Password';
                             }
                         })
                     </script>
