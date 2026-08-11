@@ -23,10 +23,28 @@ body {
 
 .field {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 12px 0;
+    width: 100%;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 8px;
-    gap: 2px;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 35px;
 }
 
 footer {
@@ -43,7 +61,8 @@ footer {
 }
 
 .login {
-    height: 460px;
+    height: auto;
+    min-height: 460px;
     width: 100%;
     background-color: #dfd4df;
     color: #000;
@@ -88,23 +107,18 @@ p {
 }
 
 .toggleSenha {
-    width: 15%;
-    background-color: var(--cor-primaria);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 20px;
+    height: auto;
     cursor: pointer;
-    transition: background-color 0.1s ease;
+    opacity: 0.6;
 }
 
 .toggleSenha:hover {
-    background-color: var(--cor-secundaria);
-}
-
-.toggleSenha:active {
-    background-color: var(--cor-secundaria);
+    opacity: 1;
 }
 
 .entra {
@@ -147,10 +161,12 @@ form {
     text-decoration: underline;
 }
 
-input{
-    padding: 5px;
+input {
+    width: 100%;
+    padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
+    border: 1px solid;
 }
 
 h3 {
@@ -160,4 +176,19 @@ h3 {
 .copyright {
     font-style: oblique;
     font-weight: bold;
+}
+
+.forgot-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.forgot-field h4 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
