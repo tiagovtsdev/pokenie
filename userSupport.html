@@ -29,23 +29,27 @@
     <main>
     <h1>User Support</h1>
     <form>
-        <label for="nome">Name:</label><br>
+        <div class="support">
         <div class="field">
-        <input id="nome" type="text" maxlength="30" placeholder="Insert your real name..." required>
+            <label for="nome">Name:</label>
+            <input id="nome" type="text" maxlength="30" placeholder="Insert your real name..." required>
         </div>
-        <label for="email">Email:</label><br>
         <div class="field">
-        <input id="email" type="email" placeholder="Insert your email. Ex: myemail@address.com" required>
+            <label for="email">Email:</label>
+            <input id="email" type="email" placeholder="Insert your email. Ex: myemail@address.com" required>
         </div>
-        <label for="numero_telefone">Phone number:</label><br>
         <div class="field">
-        <input id="numero_telefone" type="tel" maxlength="15" placeholder="Insert your phone number..." required>
+            <label for="numero_telefone">Phone number:</label>
+            <input id="numero_telefone" type="tel" maxlength="15" placeholder="Insert your phone number..." required>
         </div>
-        <label for="box1">The information i provided above is legitimate.</label>
-        <input id="box1" type="checkbox" required><br>
         
-        <label for="comentarios">Comments:</label><br>
+        <div class="box1">
+            <label for="box1">The information i provided above is legitimate.</label>
+            <input id="box1" type="checkbox" required>
+        </div>
+        
         <div class="field">
+        <label for="comentarios">Comments:</label>
         <textarea id="comentarios" maxlength="4000" placeholder="Describe your thoughts, opinions or feedbacks..." required></textarea>
         </div>
 
@@ -53,6 +57,7 @@
         <input type="submit" value="Submit"> 
         <input type="reset" value="Clear All">
         </div>
+    </div>
     </form>
 </main>
     <footer class="copyright">
