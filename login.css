@@ -84,6 +84,11 @@ nav a:hover {
     color: var(--cor-primaria);
 }
 
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .forgot_password {
     text-decoration: none;
     color: var(--cor-primaria);
