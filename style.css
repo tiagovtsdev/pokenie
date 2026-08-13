@@ -32,6 +32,11 @@ nav a:hover {
     color: var(--cor-primaria);
 }
 
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 h3 {
     font-family: var(--fonte-secundaria);
 }
