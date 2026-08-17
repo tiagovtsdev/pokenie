@@ -9,7 +9,7 @@ Para avançarmos com a nossa base, siga os passos abaixo:
 
 ### 1. Lista de Pokémons (Mock)
 - [ ] Implementar uma lista de Pokémons utilizando dados simulados (**Mock**).
-- [ ] Aplicar o framework **Bootstrap** para estilização e estrutura dos componentes.
+- [ ] **SE O PROFESSOR PERMITIR**Aplicar o framework **Bootstrap** para estilização e estrutura dos componentes.
 
 ### 2. Responsividade
 - [ ] Garantir que o site seja totalmente responsivo. 
