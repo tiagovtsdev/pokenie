@@ -7,18 +7,48 @@
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
+    --cor-fundo-primaria: #F3CDFF;
+    --cor-header-footer: #AA90C9;
+    --cor-de-texto: #000000;
+    --cor-de-texto-secundaria: #fff;
     --fonte-principal: "DM Sans", sans-serif;
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
 
 body {
     font-family: var(--fonte-principal);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--cor-fundo-primaria);
 }
 
-footer{
+.cabecalho{
+    background-color: var(--cor-header-footer);
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.menu{
+    gap: 100px;
+}
+
+.menu a{
+    color: var(--cor-de-texto);
+}
+
+.menu :hover{
+    color: var(--cor-de-texto-secundaria);
+}
+
+.logopokenie img{
+    height: 100px;
+}
+
+main{
+    min-height: 100vh;
 }
 
 nav a {
@@ -42,6 +72,23 @@ h3 {
 }
 
 .copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-style: oblique;
     font-weight: bold;
+    background-color: var(--cor-header-footer);
+    padding: 20px 30px;
+    min-height: 100px; 
+}
+
+.icon {
+    position: absolute;
+    left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.icon img {
+    height: 80px;   
 }
