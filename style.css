@@ -19,7 +19,7 @@ body {
     font-family: var(--fonte-principal);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    
     background-color: var(--cor-fundo-primaria);
 }
 
@@ -49,6 +49,28 @@ body {
 
 main{
     min-height: 100vh;
+}
+main h1{
+    text-align: center;
+}
+
+.card {
+    background-color: var(--cor-de-texto-secundaria);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.card img{
+    width: 150px;
+    height: 150px;
+}
+
+#listaDePokemons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
 }
 
 nav a {
