@@ -136,6 +136,7 @@ const listaPokemons = [
     ]
   },
 
+  //GRENINJA
   {
     "id":658,
     "name":"greninja",
@@ -162,6 +163,7 @@ const listaPokemons = [
     ]
   },
 
+  //ABRA
   {
     "id":63,
     "name":"abra",
@@ -181,6 +183,7 @@ const listaPokemons = [
     ]
   },
 
+  //O INCRIVEL PORYGON
   {
     "id":137,
     "name":"porygon",
