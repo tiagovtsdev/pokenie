@@ -7,6 +7,52 @@
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
+    --fonte-principal: "DM Sans", sans-serif;
+    --fonte-secundaria: "Bricolage Grotesque", sans-serif;
+}
+
+body {
+    font-family: var(--fonte-principal);
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+nav a {
+    text-decoration: none;
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-secundaria);
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: var(--cor-primaria);
+}
+
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+h3, h1 {
+    font-family: var(--fonte-secundaria);
+}
+
+.copyright {
+    font-style: oblique;
+    font-weight: bold;
+}* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #5F3B54;
+    --cor-secundaria: #8e607d;
     --cor-fundo-primaria: #F3CDFF;
     --cor-header-footer: #AA90C9;
     --cor-de-texto: #000000;
@@ -50,27 +96,9 @@ body {
 main{
     min-height: 100vh;
 }
+
 main h1{
     text-align: center;
-}
-
-.card {
-    background-color: var(--cor-de-texto-secundaria);
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-}
-
-.card img{
-    width: 150px;
-    height: 150px;
-}
-
-#listaDePokemons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 30px;
 }
 
 nav a {
