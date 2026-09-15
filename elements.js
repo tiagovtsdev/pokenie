@@ -63,6 +63,141 @@ const listaPokemons = [
         }
       }
     ]
+  },
+
+  {
+    "id":1,
+    "name":"bulbasaur",
+    "height":7,
+    "weight":69,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"grass",
+          "url":"https://pokeapi.co/api/v2/type/12/"
+        }
+      },
+      {
+        "slot":2,
+        "type":{
+          "name":"poison",
+          "url":"https://pokeapi.co/api/v2/type/4/"
+        }
+      }
+    ]
+  },
+
+  {
+    "id":7,
+    "name":"squirtle",
+    "height":5,
+    "weight":90,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"water",
+          "url":"https://pokeapi.co/api/v2/type/11/"
+        }
+      }
+    ]
+  },
+
+  {
+    "id":94,
+    "name":"gengar",
+    "height":15,
+    "weight":405,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"ghost",
+          "url":"https://pokeapi.co/api/v2/type/8/"
+        }
+      },
+      {
+        "slot":2,
+        "type":{
+          "name":"poison",
+          "url":"https://pokeapi.co/api/v2/type/4/"
+        }
+      }
+    ]
+  },
+
+  {
+    "id":658,
+    "name":"greninja",
+    "height":15,
+    "weight":400,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"water",
+          "url":"https://pokeapi.co/api/v2/type/11/"
+        }
+      },
+      {
+        "slot":2,
+        "type":{
+          "name":"dark",
+          "url":"https://pokeapi.co/api/v2/type/17/"
+        }
+      }
+    ]
+  },
+
+  {
+    "id":63,
+    "name":"abra",
+    "height":9,
+    "weight":195,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"psychic",
+          "url":"https://pokeapi.co/api/v2/type/14/"
+        }
+      }
+    ]
+  },
+
+  {
+    "id":137,
+    "name":"porygon",
+    "height":8,
+    "weight":365,
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png"
+    },
+    "types":[
+      {
+        "slot":1,
+        "type":{
+          "name":"normal",
+          "url":"https://pokeapi.co/api/v2/type/1/"
+        }
+      }
+    ]
   }
 ]
 
