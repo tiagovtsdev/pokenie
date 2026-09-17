@@ -7,6 +7,7 @@
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
+    --cor-branca: #FFFFFF;
     --fonte-principal: "DM Sans", sans-serif;
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
@@ -18,11 +19,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-}
-
-footer {
-    align-items: center;
-    justify-content: center
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 nav a {
@@ -38,68 +38,34 @@ nav a:hover {
 
 .menu {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
-h3, h1 {
+h1, h3 {
     font-family: var(--fonte-secundaria);
+    color: var(--cor-branca);
 }
 
 .copyright {
     font-weight: bold;
+    color: var(--cor-branca);
+    background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .cabecalho{
     background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
 }
 
-.buscar-box {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    transition: 0.5s;
-}
-
-.buscar-box.active {
-    width: 400px;
-
-}
-
-.buscar-box .lupa-buscar, .buscar-box .btn-fechar {
-    min-width: 80px;
-    height: 80px;
+.icon {
+    position: absolute;
+    left: 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
 }
 
-.buscar-box .btn-fechar i{
-    font-size: 20px;
-    margin-left: 15px;
-}
-
-.buscar-box .lupa-buscar i{
-    font-size: 35px;
-}
-
-.buscar-box .input-buscar {
-    position: absolute;
-    left: 80px;
-    width: calc(100% - 120px);
-    height: 100%;
-    line-height: 80px;
-}
-
-.buscar-box .input-buscar input {
-    border: 0;
-    outline: 0;
-    font-size: 20px;
-}
-
-.lupa-buscar img {
-    pointer-events: none;
+.icon img {
+    height: 80px;   
 }
