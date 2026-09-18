@@ -1,15 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
     --cor-branca: #FFFFFF;
     --fonte-principal: "DM Sans", sans-serif;
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -22,7 +22,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
+}
+
+h1, h3 {
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-branca);
+}
+
+.cabecalho {
+    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
 }
 
 nav a {
@@ -36,29 +49,6 @@ nav a:hover {
     color: var(--cor-primaria);
 }
 
-.menu {
-    display: flex;
-    justify-content: flex-end;
-}
-
-h1, h3 {
-    font-family: var(--fonte-secundaria);
-    color: var(--cor-branca);
-}
-
-.copyright {
-    font-weight: bold;
-    color: var(--cor-branca);
-    background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
-    margin-top: auto;
-    align-items: center;
-    justify-content: center;
-}
-
-.cabecalho{
-    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
-}
-
 .icon {
     position: absolute;
     left: 30px;
@@ -70,6 +60,58 @@ h1, h3 {
     height: 80px;   
 }
 
+.copyright {
+    font-weight: bold;
+    color: var(--cor-branca);
+    background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 15px 40px;
+    width: 100%; 
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-left-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
 .affiliation {
     font-size: 12px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--cor-branca);
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+    opacity: 0.7;
+}
+
+.social-text {
+    color: var(--cor-branca);
+    font-size: 14px;
+    font-family: var(--fonte-principal);
 }
