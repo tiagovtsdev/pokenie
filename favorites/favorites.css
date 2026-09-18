@@ -69,3 +69,7 @@ h1, h3 {
 .icon img {
     height: 80px;   
 }
+
+.affiliation {
+    font-size: 12px;
+}
