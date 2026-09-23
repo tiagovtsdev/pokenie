@@ -1,3 +1,4 @@
+/* Variáveis de cores e fontes */
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
@@ -6,12 +7,14 @@
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
 
+/* reset global*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos do corpo do body */
 body {
     font-family: var(--fonte-principal);
     background-image: url("../assets/image-1.png");
@@ -24,11 +27,13 @@ body {
     min-height: 100vh;
 }
 
+/* títulos gerais */
 h1, h3 {
     font-family: var(--fonte-secundaria);
     color: var(--cor-branca);
 }
 
+/* cabeçalho|header */
 .cabecalho {
     background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
 }
@@ -38,6 +43,7 @@ h1, h3 {
     justify-content: flex-end;
 }
 
+/* Estilos de navegação */
 nav a {
     text-decoration: none;
     font-family: var(--fonte-secundaria);
@@ -45,10 +51,12 @@ nav a {
     font-size: 20px;
 }
 
+/* Efeito especial ao passar o mouse sobre os links */
 nav a:hover {
     color: var(--cor-primaria);
 }
 
+/* Elementos do ícone */
 .icon {
     position: absolute;
     left: 30px;
@@ -60,6 +68,7 @@ nav a:hover {
     height: 80px;   
 }
 
+/* rodapé|footer */
 .copyright {
     font-weight: bold;
     color: var(--cor-branca);
@@ -72,6 +81,7 @@ nav a:hover {
     width: 100%; 
 }
 
+/* lado esquerdo do footer(logo e textos) */
 .footer-left {
     display: flex;
     align-items: center;
@@ -88,6 +98,7 @@ nav a:hover {
     font-size: 12px;
 }
 
+/* lado direito do footer (redes sociais) */
 .footer-right {
     display: flex;
     flex-direction: column;
@@ -103,7 +114,6 @@ nav a:hover {
 .social-icons a {
     color: var(--cor-branca);
     font-size: 24px;
-    transition: opacity 0.3s ease;
 }
 
 .social-icons a:hover {
