@@ -1,5 +1,4 @@
 const listaPokemons = [
-    // poliwrath
     {
         "id": 62,
         "name": "poliwrath",
@@ -50,7 +49,6 @@ const listaPokemons = [
         "weaknesses": ["flying", "grass", "electric", "psychic", "fairy"]
     },
 
-    // lucario
     {
         "id": 448,
         "name": "lucario",
@@ -101,7 +99,6 @@ const listaPokemons = [
         "weaknesses": ["fighting", "ground", "fire"]
     },
 
-    // arceus
     {
         "id": 493,
         "name": "arceus",
