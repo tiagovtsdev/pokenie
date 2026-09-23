@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- configuração padrão do HTML -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokénie</title>
+    <!-- logo na aba do navegador (favicon) -->
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <!-- importação de fontes (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- importação dos ícones (bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- link redirecionado para o CSS externo -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- cabeçalho principal do header -->
+    <header class="cabecalho">
+        <div class="logopokenie">
+            <a href="../home/index.html">
+                <img src="../assets/logoPokénie_2.png" alt="Logo Pokénie" width="150">
+            </a>
+        </div>
+        <!-- section central (barra de pesquisa) -->
+        <div class="barra-de-pesquisa">
+            <button class="search-button">
+                <img src="../assets/assets1.png" alt="Search" width="30">
+            </button>
+            <input type="text" placeholder="Search your pokemon!">
+            <button class="filter-button">
+                <img src="../assets/filtro.png" alt="Filter" width="30">
+            </button>
+        </div>
+        <!-- menu de navegação superior direito -->
+        <nav class="menu">
+            <a href="../favorites/favorites.html">
+                <img src="../assets/assets2.png" alt="My Favorites" width="38">
+                My Favorites
+            </a>
+            <a href="#">
+                <img src="../assets/gearicon.png" alt="Settings" width="38">
+                Settings
+            </a>
+        </nav>
+    </header>
+    <!-- conteúdo principal -->
+    <main>
+        <h1>Discover</h1>
+    </main>
+    <!-- rodapé da página -->
+    <footer class="copyright">
+        <!-- lado esquerdo do footer (logo e direitos autorais) -->
+        <div class="footer-left">
+            <img src="../assets/logoPokénie.png" alt="Pokénie Icon" width="50">
+            <div class="footer-left-texts">
+                <div>&copy; 2026 The Pokénie Association.* All rights reserved.</div>
+                <div class="affiliation">*We have no affiliation with The Pokémon&copy; Company.</div>
+            </div>
+        </div>
+        <!-- lado direito do footer (links das redes sociais) -->
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+            <div class="social-text">Our official social networks</div>
+        </div>
+    </footer>
+    <!-- importação de js script -->
+    <script src="../js/pokedex.js"></script>
+</body>
+</html>

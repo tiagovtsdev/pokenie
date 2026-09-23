@@ -1,0 +1,127 @@
+/* Variáveis de cores e fontes */
+:root {
+    --cor-primaria: #5F3B54;
+    --cor-secundaria: #8e607d;
+    --cor-branca: #FFFFFF;
+    --fonte-principal: "DM Sans", sans-serif;
+    --fonte-secundaria: "Bricolage Grotesque", sans-serif;
+}
+
+/* reset global*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos do corpo do body */
+body {
+    font-family: var(--fonte-principal);
+    background-image: url("../assets/image-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* títulos gerais */
+h1, h3 {
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-branca);
+}
+
+/* cabeçalho|header */
+.cabecalho {
+    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Estilos de navegação */
+nav a {
+    text-decoration: none;
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-secundaria);
+    font-size: 20px;
+}
+
+/* Efeito especial ao passar o mouse sobre os links */
+nav a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Elementos do ícone */
+.icon {
+    position: absolute;
+    left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.icon img {
+    height: 80px;   
+}
+
+/* rodapé|footer */
+.copyright {
+    font-weight: bold;
+    color: var(--cor-branca);
+    background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 15px 40px;
+    width: 100%; 
+}
+
+/* lado esquerdo do footer(logo e textos) */
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-left-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.affiliation {
+    font-size: 12px;
+}
+
+/* lado direito do footer (redes sociais) */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--cor-branca);
+    font-size: 24px;
+}
+
+.social-icons a:hover {
+    opacity: 0.7;
+}
+
+.social-text {
+    color: var(--cor-branca);
+    font-size: 14px;
+    font-family: var(--fonte-principal);
+}
