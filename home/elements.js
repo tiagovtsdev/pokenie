@@ -1,5 +1,3 @@
-// 1 array com 3 objetos
-
 const listaPokemons = [
   {
     "id":25,
