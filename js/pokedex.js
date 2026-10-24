@@ -136,7 +136,95 @@ const listaPokemons = [
             "full_chain": ["arceus"]
         },
         "weaknesses": ["fighting"]
+    },
+
+    // ---------- Pokémon do Gustavo ----------
+    {
+        "id": 658,
+        "name": "greninja",
+        "height": 15,
+        "weight": 400,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "water", "url": "https://pokeapi.co/api/v2/type/11/" } },
+            { "slot": 2, "type": { "name": "dark", "url": "https://pokeapi.co/api/v2/type/17/" } }
+        ]
+    },
+
+    {
+        "id": 63,
+        "name": "abra",
+        "height": 9,
+        "weight": 195,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "psychic", "url": "https://pokeapi.co/api/v2/type/14/" } }
+        ]
+    },
+
+    {
+        "id": 137,
+        "name": "porygon",
+        "height": 8,
+        "weight": 365,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
+        ]
     }
 ];
 
-console.log(listaPokemons);
+// ---------- Renderização dos cards (DOM) ----------
+const container = document.getElementById("listaDePokemons");
+
+// usa o sprite do próprio objeto; se não tiver, monta a URL pelo id
+function imagemDoPokemon(pokemon) {
+    if (pokemon.sprites && pokemon.sprites.front_default) {
+        return pokemon.sprites.front_default;
+    }
+    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
+}
+
+function criarCard(pokemon) {
+    const card = document.createElement("article");
+    card.classList.add("card");
+
+    const id = document.createElement("span");
+    id.classList.add("card-id");
+    id.textContent = "#" + String(pokemon.id).padStart(3, "0");
+
+    const imagem = document.createElement("img");
+    imagem.src = imagemDoPokemon(pokemon);
+    imagem.alt = pokemon.name;
+    imagem.loading = "lazy";
+
+    const nome = document.createElement("h2");
+    nome.textContent = pokemon.name;
+
+    const medidas = document.createElement("p");
+    medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
+
+    const tipos = document.createElement("p");
+    tipos.classList.add("card-tipos");
+    tipos.textContent = pokemon.types.map(function (t) {
+        return t.type.name;
+    }).join(", ");
+
+    card.append(id, imagem, nome, medidas, tipos);
+    return card;
+}
+
+function mostrarPokemons(lista) {
+    container.replaceChildren();
+    lista.forEach(function (pokemon) {
+        container.appendChild(criarCard(pokemon));
+    });
+}
+
+mostrarPokemons(listaPokemons);
