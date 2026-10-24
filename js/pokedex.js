@@ -177,6 +177,31 @@ const listaPokemons = [
             { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
         ]
     }
+
+     {
+   "id":94,
+    "name":"gengar", 
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+    }
+  },
+
+  {
+    "id":133,
+    "name":"eevee",
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+    }
+  
+  },
+
+  {
+    "id":3,
+    "name":"venusaur",
+    "sprites": {
+      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+    }
+  },
 ];
 
 const container = document.getElementById("listaDePokemons");
