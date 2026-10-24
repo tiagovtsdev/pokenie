@@ -138,7 +138,6 @@ const listaPokemons = [
         "weaknesses": ["fighting"]
     },
 
-    // ---------- Pokémon do Gustavo ----------
     {
         "id": 658,
         "name": "greninja",
@@ -180,10 +179,8 @@ const listaPokemons = [
     }
 ];
 
-// ---------- Renderização dos cards (DOM) ----------
 const container = document.getElementById("listaDePokemons");
 
-// usa o sprite do próprio objeto; se não tiver, monta a URL pelo id
 function imagemDoPokemon(pokemon) {
     if (pokemon.sprites && pokemon.sprites.front_default) {
         return pokemon.sprites.front_default;
