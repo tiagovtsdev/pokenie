@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokénie</title>
+
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div id="loader" class="loader"><div class="pokebola"></div></div>
+
     <header class="cabecalho">
         <div class="logopokenie">
             <a href="../home/index.html">
                 <img src="../assets/logoPokénie_2.png" alt="Logo Pokénie" width="150">
             </a>
         </div>
+
         <div class="barra-de-pesquisa">
             <button class="search-button">
                 <img src="../assets/assets1.png" alt="Search" width="30">
             </button>
-            <input type="text" placeholder="Search your pokemon!">
+            <input type="text" id="pesquisaPokemon" placeholder="Search your pokemon!" aria-label="Pesquisar Pokémon pelo nome">
             <button class="filter-button">
                 <img src="../assets/filtro.png" alt="Filter" width="30">
             </button>
@@ -39,6 +46,7 @@
             </a>
         </nav>
     </header>
+
     <main>
         <h1>Discover</h1>
         <div id="listaDePokemons" class="lista-pokemons"></div>

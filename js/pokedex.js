@@ -237,11 +237,53 @@ const listaPokemons = [
 ];
 
 const container = document.getElementById("listaDePokemons");
+const campoPesquisa = document.getElementById("pesquisaPokemon");
+
+let primeiraExibicao = true;
+
+// Lista que está sendo exibida na página
+let listaAtual = listaPokemons;
+
+function recuperarPokemons() {
+    return JSON.parse(localStorage.getItem("pokemons")) || [];
+}
+
+function salvarPokemon(pokemon) {
+    const favoritos = recuperarPokemons();
+
+    const jaExiste = favoritos.some(function (p) {
+        return p.id === pokemon.id;
+    });
+
+    if (!jaExiste) {
+        favoritos.push(pokemon);
+        localStorage.setItem("pokemons", JSON.stringify(favoritos));
+    }
+}
+
+function removerFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    const favoritosAtualizados = favoritos.filter(function (pokemon) {
+        return pokemon.id !== id;
+    });
+
+    localStorage.setItem("pokemons", JSON.stringify(favoritosAtualizados));
+}
+
+function ehFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    return favoritos.some(function (pokemon) {
+        return pokemon.id === id;
+    });
+}
 
 function imagemDoPokemon(pokemon) {
     if (pokemon.sprites && pokemon.sprites.front_default) {
         return pokemon.sprites.front_default;
     }
+
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
 }
 
@@ -264,34 +306,95 @@ function criarCard(pokemon) {
     const medidas = document.createElement("p");
     medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
 
-    // cada tipo vira uma "etiqueta" colorida (classe tipo-water, tipo-fire...)
     const tipos = document.createElement("div");
     tipos.classList.add("card-tipos");
-    pokemon.types.forEach(function (t) {
+    pokemon.types.forEach(function (tipo) {
         const etiqueta = document.createElement("span");
-        etiqueta.classList.add("tipo", "tipo-" + t.type.name);
-        etiqueta.textContent = t.type.name;
+        etiqueta.classList.add("tipo", "tipo-" + tipo.type.name);
+        etiqueta.textContent = tipo.type.name;
         tipos.appendChild(etiqueta);
     });
 
-    card.append(id, imagem, nome, medidas, tipos);
+    const botaoFavorito = document.createElement("button");
+    botaoFavorito.type = "button";
+    botaoFavorito.classList.add("botao-favorito");
+    botaoFavorito.textContent = ehFavorito(pokemon.id)
+        ? "❤️ Remover favorito"
+        : "🩶 Favoritar";
+
+    botaoFavorito.setAttribute(
+        "aria-label",
+        "Alternar favorito de " + pokemon.name
+    );
+
+    botaoFavorito.addEventListener("click", function () {
+        if (ehFavorito(pokemon.id)) {
+            removerFavorito(pokemon.id);
+        } else {
+            salvarPokemon(pokemon);
+        }
+
+        if (window.location.pathname.includes("favorites")) {
+            mostrarPokemons(recuperarPokemons());
+        } else {
+            mostrarPokemons(listaAtual);
+        }
+    });
+
+    card.append(id, imagem, nome, medidas, tipos, botaoFavorito);
+
     return card;
 }
 
 function mostrarPokemons(lista) {
+    if (!container) {
+        return;
+    }
+
+    listaAtual = lista;
     container.replaceChildren();
+
+    if (lista.length === 0) {
+        const mensagem = document.createElement("p");
+        mensagem.textContent = "Nenhum Pokémon encontrado.";
+        container.appendChild(mensagem);
+        return;
+    }
+
     lista.forEach(function (pokemon, indice) {
         const card = criarCard(pokemon);
-        // animação de entrada: cada card aparece um pouquinho depois do anterior
-        card.style.animationDelay = indice * 80 + "ms";
+
+        if (primeiraExibicao) {
+            card.classList.add("entrada");
+            card.style.animationDelay = indice * 80 + "ms";
+        }
+
         container.appendChild(card);
+    });
+
+    primeiraExibicao = false;
+}
+
+if (campoPesquisa) {
+    campoPesquisa.addEventListener("input", function () {
+        const termo = campoPesquisa.value.trim().toLowerCase();
+
+        const listaParaPesquisar = window.location.pathname.includes("favorites")
+            ? recuperarPokemons()
+            : listaPokemons;
+
+        const resultado = listaParaPesquisar.filter(function (pokemon) {
+            return pokemon.name.toLowerCase().includes(termo);
+        });
+
+        mostrarPokemons(resultado);
     });
 }
 
-mostrarPokemons(listaPokemons);
+if (container) {
+    mostrarPokemons(listaPokemons);
+}
 
-// ---------- Tela de carregamento (pokébola girando) ----------
-// some quando a página e as imagens terminam de carregar (mínimo de 700 ms)
 const inicioDoCarregamento = Date.now();
 window.addEventListener("load", function () {
     const loader = document.getElementById("loader");
