@@ -41,8 +41,8 @@ h1, h3 {
 
 /* cabeçalho|header */
 .cabecalho {
-    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
-    background-size: 300% 100%;
+    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2); 
+    background-size: 300% 100%; 
     animation: mover-gradiente 6s ease infinite;
 }
 
@@ -81,7 +81,7 @@ nav a:hover {
     font-weight: bold;
     color: var(--cor-branca);
     background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
-    background-size: 300% 100%;
+    background-size: 300% 100%; 
     animation: mover-gradiente 6s ease infinite;
     margin-top: auto;
     display: flex;
@@ -138,8 +138,8 @@ nav a:hover {
 
 .logopokenie {
     width: 150px;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+    will-change: transform; 
 }
 
 .logopokenie:hover {
@@ -203,7 +203,6 @@ nav a:hover {
     color: var(--cor-primaria);
 }
 
-/* celular: 2 cards por linha */
 @media (max-width: 600px) {
     .lista-pokemons {
         grid-template-columns: repeat(2, 1fr);
