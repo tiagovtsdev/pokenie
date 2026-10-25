@@ -29,7 +29,7 @@
             <button class="search-button">
                 <img src="../assets/assets1.png" alt="Search" width="30">
             </button>
-            <input type="text" placeholder="Search your pokemon!">
+            <input type="text" id="pesquisaPokemon" placeholder="Search your pokemon!" aria-label="Pesquisar Pokémon pelo nome">
             <button class="filter-button">
                 <img src="../assets/filtro.png" alt="Filter" width="30">
             </button>
@@ -49,6 +49,7 @@
     <!-- conteúdo principal -->
     <main>
         <h1>My Favorites</h1>
+        <div id="listaDePokemons" class="lista-pokemons"></div>
     </main>
     <!-- rodapé da página -->
     <footer class="copyright">
@@ -73,5 +74,6 @@
     </footer>
     <!-- importação de js script -->
     <script src="../js/pokedex.js"></script>
+<script src="../js/favoritos.js"></script>
 </body>
 </html>
