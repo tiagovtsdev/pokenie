@@ -176,31 +176,49 @@ const listaPokemons = [
         "types": [
             { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
         ]
-    }
+    },
 
-     {
-   "id":94,
-    "name":"gengar", 
-    "sprites": {
-      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
-    }
+    {
+        "id": 94,
+        "name": "gengar",
+        "height": 15,
+        "weight": 405,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "ghost", "url": "https://pokeapi.co/api/v2/type/8/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
   },
 
   {
-    "id":133,
-    "name":"eevee",
-    "sprites": {
-      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
-    }
-  
+        "id": 133,
+        "name": "eevee",
+        "height": 3,
+        "weight": 65,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+        },
+        "types": [
+            {
+            "slot": 1,
+            "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
+        ]
   },
 
   {
-    "id":3,
-    "name":"venusaur",
-    "sprites": {
-      "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
-    }
+        "id": 3,
+        "name": "venusaur",
+        "height": 20,
+        "weight": 1000,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "grass", "url": "https://pokeapi.co/api/v2/type/12/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
   },
 ];
 
