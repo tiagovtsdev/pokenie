@@ -176,15 +176,118 @@ const listaPokemons = [
         "types": [
             { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
         ]
-    }
+    },
+
+    {
+        "id": 94,
+        "name": "gengar",
+        "height": 15,
+        "weight": 405,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "ghost", "url": "https://pokeapi.co/api/v2/type/8/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
+  },
+
+  {
+        "id": 133,
+        "name": "eevee",
+        "height": 3,
+        "weight": 65,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+        },
+        "types": [
+            {
+            "slot": 1,
+            "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
+        ]
+  },
+
+  {
+        "id": 3,
+        "name": "venusaur",
+        "height": 20,
+        "weight": 1000,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "grass", "url": "https://pokeapi.co/api/v2/type/12/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
+  },
+
+  {
+    "id": 149,
+    "name": "dragonite",
+    "height": 22,
+    "weight": 2100,
+     "sprites": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+    },
+    "types": [
+        { "slot": 1, "type": { "name": "dragon", "url": "https://pokeapi.co/api/v2/type/16/" } },
+        { "slot": 2, "type": { "name": "flying", "url": "https://pokeapi.co/api/v2/type/3/" } }
+    ]
+  },
 ];
 
 const container = document.getElementById("listaDePokemons");
+const campoPesquisa = document.getElementById("pesquisaPokemon");
 
+// Lista que está sendo exibida na página
+let listaAtual = listaPokemons;
+
+// Recupera os favoritos salvos no navegador
+function recuperarPokemons() {
+    return JSON.parse(localStorage.getItem("pokemons")) || [];
+}
+
+// Salva os favoritos no navegador
+function salvarPokemon(pokemon) {
+    const favoritos = recuperarPokemons();
+
+    const jaExiste = favoritos.some(function (p) {
+        return p.id === pokemon.id;
+    });
+
+    if (!jaExiste) {
+        favoritos.push(pokemon);
+        localStorage.setItem("pokemons", JSON.stringify(favoritos));
+    }
+}
+
+// Remove um Pokémon dos favoritos
+function removerFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    const favoritosAtualizados = favoritos.filter(function (pokemon) {
+        return pokemon.id !== id;
+    });
+
+    localStorage.setItem("pokemons", JSON.stringify(favoritosAtualizados));
+}
+
+// Verifica se um Pokémon já é favorito
+function ehFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    return favoritos.some(function (pokemon) {
+        return pokemon.id === id;
+    });
+}
+
+// Escolhe a imagem do Pokémon
 function imagemDoPokemon(pokemon) {
     if (pokemon.sprites && pokemon.sprites.front_default) {
         return pokemon.sprites.front_default;
     }
+
+// Cria o card de cada Pokémon
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
 }
 
@@ -192,8 +295,7 @@ function criarCard(pokemon) {
     const card = document.createElement("article");
     card.classList.add("card");
 
-    const id = document.createElement("span");
-    id.classList.add("card-id");
+    const id = document.createElement("span");    id.classList.add("card-id");
     id.textContent = "#" + String(pokemon.id).padStart(3, "0");
 
     const imagem = document.createElement("img");
@@ -209,19 +311,75 @@ function criarCard(pokemon) {
 
     const tipos = document.createElement("p");
     tipos.classList.add("card-tipos");
-    tipos.textContent = pokemon.types.map(function (t) {
-        return t.type.name;
+    tipos.textContent = pokemon.types.map(function (tipo) {
+        return tipo.type.name;
     }).join(", ");
 
-    card.append(id, imagem, nome, medidas, tipos);
+    // Botão de favorito
+    const botaoFavorito = document.createElement("button");
+    botaoFavorito.type = "button";
+    botaoFavorito.classList.add("botao-favorito");
+    botaoFavorito.textContent = ehFavorito(pokemon.id)
+        ? "❤️ Remover favorito"
+        : "🩶 Favoritar";
+
+    botaoFavorito.setAttribute(
+        "aria-label",
+        "Alternar favorito de " + pokemon.name
+    );
+
+    botaoFavorito.addEventListener("click", function () {
+        if (ehFavorito(pokemon.id)) {
+            removerFavorito(pokemon.id);
+        } else {
+            salvarPokemon(pokemon);
+        }
+
+        // Atualiza a lista de acordo com a página
+        if (window.location.pathname.includes("favorites")) {
+            mostrarPokemons(recuperarPokemons());
+        } else {
+            mostrarPokemons(listaAtual);
+        }
+    });
+
+    card.append(id, imagem, nome, medidas, tipos, botaoFavorito);
+
     return card;
 }
 
+// Exibe os cards na tela
 function mostrarPokemons(lista) {
+    if (!container) {
+        return;
+    }
+
+    listaAtual = lista;
     container.replaceChildren();
+
+    if (lista.length === 0) {
+        const mensagem = document.createElement("p");
+        mensagem.textContent = "Nenhum Pokémon encontrado.";
+        container.appendChild(mensagem);
+        return;
+    }
+
     lista.forEach(function (pokemon) {
         container.appendChild(criarCard(pokemon));
     });
 }
+function salvarPokemon(pokemon) {
+    let pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
 
+     const jaExiste = pokemonsSalvos.some(function (p) {
+        return p.id === pokemon.id;
+  });
+    localStorage.setItem("pokemons", JSON.stringify(pokemonsSalvos));
+}
+
+function recuperarPokemons() {
+    const pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
+
+    return pokemonsSalvos;
+}
 mostrarPokemons(listaPokemons);
