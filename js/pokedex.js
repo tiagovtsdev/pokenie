@@ -287,11 +287,10 @@ function imagemDoPokemon(pokemon) {
         return pokemon.sprites.front_default;
     }
 
-    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
-        + pokemon.id + ".png";
+// Cria o card de cada Pokémon
+    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
 }
 
-// Cria o card de cada Pokémon
 function criarCard(pokemon) {
     const card = document.createElement("article");
     card.classList.add("card");
@@ -309,9 +308,7 @@ function criarCard(pokemon) {
     nome.textContent = pokemon.name;
 
     const medidas = document.createElement("p");
-    medidas.textContent =
-        "Height: " + pokemon.height +
-        " | Weight: " + pokemon.weight;
+    medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
 
     const tipos = document.createElement("p");
     tipos.classList.add("card-tipos");
