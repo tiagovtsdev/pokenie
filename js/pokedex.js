@@ -176,7 +176,7 @@ const listaPokemons = [
         "types": [
             { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
         ]
-    }
+    },
 
      {
    "id":94,
@@ -217,8 +217,7 @@ function criarCard(pokemon) {
     const card = document.createElement("article");
     card.classList.add("card");
 
-    const id = document.createElement("span");
-    id.classList.add("card-id");
+    const id = document.createElement("span");    id.classList.add("card-id");
     id.textContent = "#" + String(pokemon.id).padStart(3, "0");
 
     const imagem = document.createElement("img");
@@ -248,5 +247,18 @@ function mostrarPokemons(lista) {
         container.appendChild(criarCard(pokemon));
     });
 }
+function salvarPokemon(pokemon) {
+    let pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
 
+     const jaExiste = pokemonsSalvos.some(function (p) {
+        return p.id === pokemon.id;
+  });
+    localStorage.setItem("pokemons", JSON.stringify(pokemonsSalvos));
+}
+
+function recuperarPokemons() {
+    const pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
+
+    return pokemonsSalvos;
+}
 mostrarPokemons(listaPokemons);
