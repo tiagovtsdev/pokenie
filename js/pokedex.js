@@ -287,9 +287,6 @@ function imagemDoPokemon(pokemon) {
         return pokemon.sprites.front_default;
     }
 
-    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
-}
-
 // Cria o card de cada Pokémon
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
 }
