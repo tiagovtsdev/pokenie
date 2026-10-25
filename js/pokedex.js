@@ -220,6 +220,20 @@ const listaPokemons = [
             { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
         ]
   },
+
+  {
+    "id": 149,
+    "name": "dragonite",
+    "height": 22,
+    "weight": 2100,
+     "sprites": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+    },
+    "types": [
+        { "slot": 1, "type": { "name": "dragon", "url": "https://pokeapi.co/api/v2/type/16/" } },
+        { "slot": 2, "type": { "name": "flying", "url": "https://pokeapi.co/api/v2/type/3/" } }
+    ]
+  },
 ];
 
 const container = document.getElementById("listaDePokemons");
