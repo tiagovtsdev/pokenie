@@ -203,3 +203,14 @@ nav a:hover {
     color: var(--cor-primaria);
 }
 
+@media (max-width: 600px) {
+    .lista-pokemons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card img {
+        width: 100px;
+        height: 100px;
+    }
+}
