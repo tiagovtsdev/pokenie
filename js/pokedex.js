@@ -1,5 +1,4 @@
 const listaPokemons = [
-    // poliwrath
     {
         "id": 62,
         "name": "poliwrath",
@@ -50,7 +49,6 @@ const listaPokemons = [
         "weaknesses": ["flying", "grass", "electric", "psychic", "fairy"]
     },
 
-    // lucario
     {
         "id": 448,
         "name": "lucario",
@@ -101,7 +99,6 @@ const listaPokemons = [
         "weaknesses": ["fighting", "ground", "fire"]
     },
 
-    // arceus
     {
         "id": 493,
         "name": "arceus",
@@ -139,7 +136,149 @@ const listaPokemons = [
             "full_chain": ["arceus"]
         },
         "weaknesses": ["fighting"]
-    }
+    },
+
+    {
+        "id": 658,
+        "name": "greninja",
+        "height": 15,
+        "weight": 400,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "water", "url": "https://pokeapi.co/api/v2/type/11/" } },
+            { "slot": 2, "type": { "name": "dark", "url": "https://pokeapi.co/api/v2/type/17/" } }
+        ]
+    },
+
+    {
+        "id": 63,
+        "name": "abra",
+        "height": 9,
+        "weight": 195,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "psychic", "url": "https://pokeapi.co/api/v2/type/14/" } }
+        ]
+    },
+
+    {
+        "id": 137,
+        "name": "porygon",
+        "height": 8,
+        "weight": 365,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
+        ]
+    },
+
+    {
+        "id": 94,
+        "name": "gengar",
+        "height": 15,
+        "weight": 405,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "ghost", "url": "https://pokeapi.co/api/v2/type/8/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
+  },
+
+  {
+        "id": 133,
+        "name": "eevee",
+        "height": 3,
+        "weight": 65,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+        },
+        "types": [
+            {
+            "slot": 1,
+            "type": { "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" } }
+        ]
+  },
+
+  {
+        "id": 3,
+        "name": "venusaur",
+        "height": 20,
+        "weight": 1000,
+        "sprites": {
+            "front_default":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+        },
+        "types": [
+            { "slot": 1, "type": { "name": "grass", "url": "https://pokeapi.co/api/v2/type/12/" } },
+            { "slot": 2, "type": { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" } }
+        ]
+  },
+
+  {
+    "id": 149,
+    "name": "dragonite",
+    "height": 22,
+    "weight": 2100,
+     "sprites": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+    },
+    "types": [
+        { "slot": 1, "type": { "name": "dragon", "url": "https://pokeapi.co/api/v2/type/16/" } },
+        { "slot": 2, "type": { "name": "flying", "url": "https://pokeapi.co/api/v2/type/3/" } }
+    ]
+  },
 ];
 
-console.log(listaPokemons);
+const container = document.getElementById("listaDePokemons");
+
+function imagemDoPokemon(pokemon) {
+    if (pokemon.sprites && pokemon.sprites.front_default) {
+        return pokemon.sprites.front_default;
+    }
+    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
+}
+
+function criarCard(pokemon) {
+    const card = document.createElement("article");
+    card.classList.add("card");
+
+    const id = document.createElement("span");
+    id.classList.add("card-id");
+    id.textContent = "#" + String(pokemon.id).padStart(3, "0");
+
+    const imagem = document.createElement("img");
+    imagem.src = imagemDoPokemon(pokemon);
+    imagem.alt = pokemon.name;
+    imagem.loading = "lazy";
+
+    const nome = document.createElement("h2");
+    nome.textContent = pokemon.name;
+
+    const medidas = document.createElement("p");
+    medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
+
+    const tipos = document.createElement("p");
+    tipos.classList.add("card-tipos");
+    tipos.textContent = pokemon.types.map(function (t) {
+        return t.type.name;
+    }).join(", ");
+
+    card.append(id, imagem, nome, medidas, tipos);
+    return card;
+}
+
+function mostrarPokemons(lista) {
+    container.replaceChildren();
+    lista.forEach(function (pokemon) {
+        container.appendChild(criarCard(pokemon));
+    });
+}
+
+mostrarPokemons(listaPokemons);
