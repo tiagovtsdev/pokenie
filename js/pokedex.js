@@ -295,8 +295,7 @@ function criarCard(pokemon) {
     const card = document.createElement("article");
     card.classList.add("card");
 
-    const id = document.createElement("span");
-    id.classList.add("card-id");
+    const id = document.createElement("span");    id.classList.add("card-id");
     id.textContent = "#" + String(pokemon.id).padStart(3, "0");
 
     const imagem = document.createElement("img");
@@ -369,25 +368,18 @@ function mostrarPokemons(lista) {
         container.appendChild(criarCard(pokemon));
     });
 }
+function salvarPokemon(pokemon) {
+    let pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
 
-// Pesquisa Pokémon pelo nome
-if (campoPesquisa) {
-    campoPesquisa.addEventListener("input", function () {
-        const termo = campoPesquisa.value.trim().toLowerCase();
-
-        const listaParaPesquisar = window.location.pathname.includes("favorites")
-            ? recuperarPokemons()
-            : listaPokemons;
-
-        const resultado = listaParaPesquisar.filter(function (pokemon) {
-            return pokemon.name.toLowerCase().includes(termo);
-        });
-
-        mostrarPokemons(resultado);
-    });
+     const jaExiste = pokemonsSalvos.some(function (p) {
+        return p.id === pokemon.id;
+  });
+    localStorage.setItem("pokemons", JSON.stringify(pokemonsSalvos));
 }
 
-// Exibe os Pokémon na página inicial, quando houver o container
-if (container) {
-    mostrarPokemons(listaPokemons);
+function recuperarPokemons() {
+    const pokemonsSalvos = JSON.parse(localStorage.getItem("pokemons")) || [];
+
+    return pokemonsSalvos;
 }
+mostrarPokemons(listaPokemons);

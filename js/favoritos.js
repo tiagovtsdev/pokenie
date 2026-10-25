@@ -1,7 +1,22 @@
-function mostrarFavoritos() {
-    const favoritos = recuperarPokemons();
-    mostrarPokemons(favoritos);
+
+function recuperarPokemons() {
+    return JSON.parse(localStorage.getItem("pokemons")) || [];
 }
 
-// Mostra os favoritos quando a página é carregada
+function mostrarFavoritos() {
+    const favoritos = recuperarPokemons();
+
+    console.log("Pokémon salvos:", favoritos);
+}
+
+function removerFavorito(id){
+     const favoritos = recuperarPokemons();
+
+    const favoritosAtualizados = favoritos.filter(function (pokemon) {
+        return pokemon.id !== id;
+    });
+    
+    localStorage.setItem("pokemons", JSON.stringify(favoritosAtualizados));
+
+}
 mostrarFavoritos();
