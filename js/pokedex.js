@@ -237,11 +237,60 @@ const listaPokemons = [
 ];
 
 const container = document.getElementById("listaDePokemons");
+const campoPesquisa = document.getElementById("pesquisaPokemon");
 
+// Lista que está sendo exibida na página
+let listaAtual = listaPokemons;
+
+// Recupera os favoritos salvos no navegador
+function recuperarPokemons() {
+    return JSON.parse(localStorage.getItem("pokemons")) || [];
+}
+
+// Salva os favoritos no navegador
+function salvarPokemon(pokemon) {
+    const favoritos = recuperarPokemons();
+
+    const jaExiste = favoritos.some(function (p) {
+        return p.id === pokemon.id;
+    });
+
+    if (!jaExiste) {
+        favoritos.push(pokemon);
+        localStorage.setItem("pokemons", JSON.stringify(favoritos));
+    }
+}
+
+// Remove um Pokémon dos favoritos
+function removerFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    const favoritosAtualizados = favoritos.filter(function (pokemon) {
+        return pokemon.id !== id;
+    });
+
+    localStorage.setItem("pokemons", JSON.stringify(favoritosAtualizados));
+}
+
+// Verifica se um Pokémon já é favorito
+function ehFavorito(id) {
+    const favoritos = recuperarPokemons();
+
+    return favoritos.some(function (pokemon) {
+        return pokemon.id === id;
+    });
+}
+
+// Escolhe a imagem do Pokémon
 function imagemDoPokemon(pokemon) {
     if (pokemon.sprites && pokemon.sprites.front_default) {
         return pokemon.sprites.front_default;
     }
+
+    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
+}
+
+// Cria o card de cada Pokémon
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
 }
 
@@ -266,19 +315,82 @@ function criarCard(pokemon) {
 
     const tipos = document.createElement("p");
     tipos.classList.add("card-tipos");
-    tipos.textContent = pokemon.types.map(function (t) {
-        return t.type.name;
+    tipos.textContent = pokemon.types.map(function (tipo) {
+        return tipo.type.name;
     }).join(", ");
 
-    card.append(id, imagem, nome, medidas, tipos);
+    // Botão de favorito
+    const botaoFavorito = document.createElement("button");
+    botaoFavorito.type = "button";
+    botaoFavorito.classList.add("botao-favorito");
+    botaoFavorito.textContent = ehFavorito(pokemon.id)
+        ? "❤️ Remover favorito"
+        : "🩶 Favoritar";
+
+    botaoFavorito.setAttribute(
+        "aria-label",
+        "Alternar favorito de " + pokemon.name
+    );
+
+    botaoFavorito.addEventListener("click", function () {
+        if (ehFavorito(pokemon.id)) {
+            removerFavorito(pokemon.id);
+        } else {
+            salvarPokemon(pokemon);
+        }
+
+        // Atualiza a lista de acordo com a página
+        if (window.location.pathname.includes("favorites")) {
+            mostrarPokemons(recuperarPokemons());
+        } else {
+            mostrarPokemons(listaAtual);
+        }
+    });
+
+    card.append(id, imagem, nome, medidas, tipos, botaoFavorito);
+
     return card;
 }
 
+// Exibe os cards na tela
 function mostrarPokemons(lista) {
+    if (!container) {
+        return;
+    }
+
+    listaAtual = lista;
     container.replaceChildren();
+
+    if (lista.length === 0) {
+        const mensagem = document.createElement("p");
+        mensagem.textContent = "Nenhum Pokémon encontrado.";
+        container.appendChild(mensagem);
+        return;
+    }
+
     lista.forEach(function (pokemon) {
         container.appendChild(criarCard(pokemon));
     });
 }
 
-mostrarPokemons(listaPokemons);
+// Pesquisa Pokémon pelo nome
+if (campoPesquisa) {
+    campoPesquisa.addEventListener("input", function () {
+        const termo = campoPesquisa.value.trim().toLowerCase();
+
+        const listaParaPesquisar = window.location.pathname.includes("favorites")
+            ? recuperarPokemons()
+            : listaPokemons;
+
+        const resultado = listaParaPesquisar.filter(function (pokemon) {
+            return pokemon.name.toLowerCase().includes(termo);
+        });
+
+        mostrarPokemons(resultado);
+    });
+}
+
+// Exibe os Pokémon na página inicial, quando houver o container
+if (container) {
+    mostrarPokemons(listaPokemons);
+}
