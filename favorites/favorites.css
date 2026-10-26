@@ -145,3 +145,71 @@ nav a:hover {
 .logopokenie:hover {
     transform: scale(1.1);
 }
+
+.lista-pokemons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    padding: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 16px;
+    background-color: var(--cor-branca);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* animação: o card sobe e a sombra cresce ao passar o mouse */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-id {
+    align-self: flex-start;
+    font-size: 14px;
+    color: var(--cor-secundaria);
+    font-weight: 700;
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.card h2 {
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-primaria);
+    text-transform: capitalize;
+}
+
+.card p {
+    font-size: 14px;
+    color: #444;
+}
+
+.card-tipos {
+    text-transform: capitalize;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+@media (max-width: 600px) {
+    .lista-pokemons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card img {
+        width: 100px;
+        height: 100px;
+    }
+}
