@@ -4,7 +4,6 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Variáveis de cores e fontes */
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
@@ -13,14 +12,13 @@
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
 
-/* reset global*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos do corpo do body */
+
 body {
     font-family: var(--fonte-principal);
     background-image: url("../assets/image-1.png");
@@ -33,16 +31,14 @@ body {
     min-height: 100vh;
 }
 
-/* títulos gerais */
 h1, h3 {
     font-family: var(--fonte-secundaria);
     color: var(--cor-branca);
 }
 
-/* cabeçalho|header */
 .cabecalho {
-    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
-    background-size: 300% 100%;
+    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2); 
+    background-size: 300% 100%; 
     animation: mover-gradiente 6s ease infinite;
 }
 
@@ -51,7 +47,6 @@ h1, h3 {
     justify-content: flex-end;
 }
 
-/* Estilos de navegação */
 nav a {
     text-decoration: none;
     font-family: var(--fonte-secundaria);
@@ -59,12 +54,10 @@ nav a {
     font-size: 20px;
 }
 
-/* Efeito especial ao passar o mouse sobre os links */
 nav a:hover {
     color: var(--cor-primaria);
 }
 
-/* Elementos do ícone */
 .icon {
     position: absolute;
     left: 30px;
@@ -76,12 +69,11 @@ nav a:hover {
     height: 80px;   
 }
 
-/* rodapé|footer */
 .copyright {
     font-weight: bold;
     color: var(--cor-branca);
     background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
-    background-size: 300% 100%;
+    background-size: 300% 100%; 
     animation: mover-gradiente 6s ease infinite;
     margin-top: auto;
     display: flex;
@@ -91,7 +83,6 @@ nav a:hover {
     width: 100%; 
 }
 
-/* lado esquerdo do footer(logo e textos) */
 .footer-left {
     display: flex;
     align-items: center;
@@ -108,7 +99,6 @@ nav a:hover {
     font-size: 12px;
 }
 
-/* lado direito do footer (redes sociais) */
 .footer-right {
     display: flex;
     flex-direction: column;
@@ -138,13 +128,14 @@ nav a:hover {
 
 .logopokenie {
     width: 150px;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+    will-change: transform; 
 }
 
 .logopokenie:hover {
     transform: scale(1.1);
 }
+
 
 .lista-pokemons {
     display: grid;
@@ -153,41 +144,64 @@ nav a:hover {
     padding: 24px;
 }
 
+:root {
+    --pokedex-escuro: #2B2233;
+}
+
+h1 {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    padding: 20px 16px;
+    padding: 16px;
     background-color: var(--cor-branca);
+    border: 3px solid var(--pokedex-escuro);
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-align: center;
-    /* animação: o card sobe e a sombra cresce ao passar o mouse */
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card.entrada {
+    animation: entrada 0.5s ease both;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 0 var(--pokedex-escuro), 0 18px 28px rgba(0, 0, 0, 0.35);
+}
+
+.card:hover .botao-favorito img { 
+    animation: none; 
 }
 
 .card-id {
     align-self: flex-start;
     font-size: 14px;
-    color: var(--cor-secundaria);
     font-weight: 700;
+    color: var(--cor-secundaria);
 }
 
 .card img {
     width: 150px;
     height: 150px;
-    object-fit: contain;
+    padding: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid var(--pokedex-escuro);
+}
+
+
+.card:hover img {
+    animation: balancar 0.6s ease;
 }
 
 .card h2 {
     font-family: var(--fonte-secundaria);
-    color: var(--cor-primaria);
+    color: var(--pokedex-escuro);
     text-transform: capitalize;
 }
 
@@ -197,9 +211,107 @@ nav a:hover {
 }
 
 .card-tipos {
-    text-transform: capitalize;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.tipo {
+    padding: 3px 12px;
+    border-radius: 999px;
+    color: var(--cor-branca);
+    font-size: 12px;
     font-weight: 700;
-    color: var(--cor-primaria);
+    text-transform: capitalize;
+    background-color: #777;
+}
+.tipo-normal { background-color: #A8A77A; }
+.tipo-fire { background-color: #EE8130; }
+.tipo-water { background-color: #6390F0; }
+.tipo-electric { background-color: #D9A800; }
+.tipo-grass { background-color: #4FA83A; }
+.tipo-ice { background-color: #5CBFBF; }
+.tipo-fighting { background-color: #C22E28; }
+.tipo-poison { background-color: #A33EA1; }
+.tipo-ground { background-color: #B8924A; }
+.tipo-flying { background-color: #8E7BE0; }
+.tipo-psychic { background-color: #F95587; }
+.tipo-bug { background-color: #8FA515; }
+.tipo-rock { background-color: #A38F2D; }
+.tipo-ghost { background-color: #735797; }
+.tipo-dragon { background-color: #6F35FC; }
+.tipo-dark { background-color: #705746; }
+.tipo-steel { background-color: #8A8AA8; }
+.tipo-fairy { background-color: #D685AD; }
+
+.botao-favorito {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #000000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.botao-favorito img {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.botao-favorito img {
+    filter: grayscale(1) brightness(0.8);
+}
+
+.botao-favorito.favoritado img {
+    filter: brightness(0) saturate(100%) invert(80%) sepia(85%) saturate(1500%) hue-rotate(5deg) brightness(105%);
+}
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-primaria);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.mewtwo-loader {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    animation: girar 2s linear infinite;
+}
+
+.loader.some {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes entrada {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes balancar {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-12deg); }
+    75% { transform: rotate(12deg); }
 }
 
 @media (max-width: 600px) {
