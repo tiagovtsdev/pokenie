@@ -539,7 +539,7 @@ function criarCard(pokemon) {
 
     const id = document.createElement("span");
     id.classList.add("card-id");
-    id.textContent = "#" + String(pokemon.id).padStart(3, "0");
+    id.textContent = "ID " + String(pokemon.id).padStart(4, "0");
 
     const imagem = document.createElement("img");
     imagem.src = imagemDoPokemon(pokemon);
@@ -550,7 +550,6 @@ function criarCard(pokemon) {
     nome.textContent = pokemon.name;
 
     const medidas = document.createElement("p");
-    medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
 
     const tipos = document.createElement("div");
     tipos.classList.add("card-tipos");
@@ -564,9 +563,13 @@ function criarCard(pokemon) {
     const botaoFavorito = document.createElement("button");
     botaoFavorito.type = "button";
     botaoFavorito.classList.add("botao-favorito");
-    botaoFavorito.textContent = ehFavorito(pokemon.id)
-        ? "❤️ Remover favorito"
-        : "🩶 Favoritar";
+
+    const iconeFavorito = document.createElement("img");
+    iconeFavorito.src = "../assets/favorito.png";
+    botaoFavorito.appendChild(iconeFavorito);
+    if (ehFavorito(pokemon.id)) {
+        botaoFavorito.classList.add("favoritado");
+    }
 
     botaoFavorito.setAttribute(
         "aria-label",
@@ -602,7 +605,6 @@ function mostrarPokemons(lista) {
 
     if (lista.length === 0) {
         const mensagem = document.createElement("p");
-        mensagem.textContent = "Nenhum Pokémon encontrado.";
         container.appendChild(mensagem);
         return;
     }
@@ -641,14 +643,11 @@ if (container) {
     mostrarPokemons(listaPokemons);
 }
 
-const inicioDoCarregamento = Date.now();
+const loader = document.getElementById("loader");
 window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    if (!loader) {
-        return;
-    }
-    const espera = Math.max(0, 700 - (Date.now() - inicioDoCarregamento));
     setTimeout(function () {
-        loader.classList.add("some");
-    }, espera);
+        if (loader) {
+            loader.classList.add("some");
+        }
+    }, 700);
 });

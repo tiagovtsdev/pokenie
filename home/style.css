@@ -145,7 +145,6 @@ nav a:hover {
 }
 
 :root {
-    --pokedex-vermelho: #DC0A2D;
     --pokedex-escuro: #2B2233;
 }
 
@@ -161,9 +160,7 @@ h1 {
     padding: 16px;
     background-color: var(--cor-branca);
     border: 3px solid var(--pokedex-escuro);
-    border-top: 10px solid var(--pokedex-vermelho);
     border-radius: 16px;
-    box-shadow: 0 6px 0 var(--pokedex-escuro), 0 10px 18px rgba(0, 0, 0, 0.3);
     text-align: center;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -177,6 +174,10 @@ h1 {
     box-shadow: 0 6px 0 var(--pokedex-escuro), 0 18px 28px rgba(0, 0, 0, 0.35);
 }
 
+.card:hover .botao-favorito img { 
+    animation: none; 
+}
+
 .card-id {
     align-self: flex-start;
     font-size: 14px;
@@ -188,9 +189,8 @@ h1 {
     width: 150px;
     height: 150px;
     padding: 8px;
-    object-fit: contain;
     border-radius: 50%;
-    background: radial-gradient(circle, #F4EEFA 0%, #D9C9EC 100%);
+    background: transparent;
     border: 3px solid var(--pokedex-escuro);
 }
 
@@ -245,21 +245,31 @@ h1 {
 .tipo-fairy { background-color: #D685AD; }
 
 .botao-favorito {
-    margin-top: 4px;
-    padding: 6px 14px;
-    border: 2px solid var(--pokedex-escuro);
-    border-radius: 999px;
-    background-color: var(--cor-branca);
-    color: var(--pokedex-escuro);
-    font-family: var(--fonte-secundaria);
-    font-weight: 700;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #000000;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
-.botao-favorito:hover {
-    background-color: #F4EEFA;
-    transform: scale(1.05);
+.botao-favorito img {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.botao-favorito.favoritado img {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(76%) saturate(1966%) hue-rotate(357deg) brightness(103%) contrast(104%);
+
 }
 
 .loader {
@@ -273,35 +283,20 @@ h1 {
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+.mewtwo-loader {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    animation: girar 2s linear infinite;
+}
+
 .loader.some {
     opacity: 0;
     visibility: hidden;
 }
 
-.pokebola {
-    position: relative;
-    width: 90px;
-    height: 90px;
-    border: 5px solid var(--pokedex-escuro);
-    border-radius: 50%;
-    background: linear-gradient(to bottom, var(--pokedex-vermelho) 0 46%, var(--pokedex-escuro) 46% 54%, var(--cor-branca) 54%);
-    animation: girar 1s linear infinite;
-}
-
-.pokebola::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 26px;
-    height: 26px;
-    transform: translate(-50%, -50%);
-    border: 5px solid var(--pokedex-escuro);
-    border-radius: 50%;
-    background-color: var(--cor-branca);
-}
-
 @keyframes girar {
+    from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
@@ -314,12 +309,6 @@ h1 {
     0%, 100% { transform: rotate(0); }
     25% { transform: rotate(-12deg); }
     75% { transform: rotate(12deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .card.entrada, .card:hover img, .pokebola {
-        animation: none;
-    }
 }
 
 @media (max-width: 600px) {
