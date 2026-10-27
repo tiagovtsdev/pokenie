@@ -3,21 +3,21 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
+/* customização de comandos */
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
     --cor-branca: #FFFFFF;
     --fonte-principal: "DM Sans", sans-serif;
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
+    --pokedex-escuro: #2B2233;
 }
-
+/* reset global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: var(--fonte-principal);
@@ -129,29 +129,19 @@ nav a:hover {
 .logopokenie {
     width: 150px;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
-    will-change: transform; 
 }
 
 .logopokenie:hover {
     transform: scale(1.1);
 }
-
-
+/* grid que exibe os pokemons */
 .lista-pokemons {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 24px;
     padding: 24px;
 }
-
-:root {
-    --pokedex-escuro: #2B2233;
-}
-
-h1 {
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-}
-
+/* estrutura visual dos cards */
 .card {
     display: flex;
     flex-direction: column;
@@ -173,7 +163,7 @@ h1 {
     transform: translateY(-8px);
     box-shadow: 0 6px 0 var(--pokedex-escuro), 0 18px 28px rgba(0, 0, 0, 0.35);
 }
-
+/* evita conflito para não se juntar com o pokémon se movendo */
 .card:hover .botao-favorito img { 
     animation: none; 
 }
@@ -193,7 +183,6 @@ h1 {
     background: transparent;
     border: 3px solid var(--pokedex-escuro);
 }
-
 
 .card:hover img {
     animation: balancar 0.6s ease;
@@ -225,6 +214,7 @@ h1 {
     text-transform: capitalize;
     background-color: #777;
 }
+/* cores dos elementos correspondentes dos pokemons */
 .tipo-normal { background-color: #A8A77A; }
 .tipo-fire { background-color: #EE8130; }
 .tipo-water { background-color: #6390F0; }
@@ -243,7 +233,7 @@ h1 {
 .tipo-dark { background-color: #705746; }
 .tipo-steel { background-color: #8A8AA8; }
 .tipo-fairy { background-color: #D685AD; }
-
+/* botao para favoritar pokemon */
 .botao-favorito {
     width: 42px;
     height: 42px;
@@ -269,9 +259,8 @@ h1 {
 
 .botao-favorito.favoritado img {
     filter: brightness(0) saturate(100%) invert(84%) sepia(76%) saturate(1966%) hue-rotate(357deg) brightness(103%) contrast(104%);
-
 }
-
+/* tela de carregamento */
 .loader {
     position: fixed;
     inset: 0;
@@ -282,41 +271,40 @@ h1 {
     background-color: var(--cor-primaria);
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
+/* imagem do mewtwo girando no lazy loading */
 .mewtwo-loader {
     width: 130px;
     height: 130px;
     object-fit: contain;
     animation: girar 2s linear infinite;
 }
-
+/* oculta apos milisegundos via JS */
 .loader.some {
     opacity: 0;
     visibility: hidden;
 }
-
+/* animação de carregamento do mewtwo */
 @keyframes girar {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
+/* animação ao iniciar cards dos pokemons */
 @keyframes entrada {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
+/* animação ao encostar cards dos pokemons */
 @keyframes balancar {
     0%, 100% { transform: rotate(0); }
     25% { transform: rotate(-12deg); }
     75% { transform: rotate(12deg); }
 }
-
+/* limite de telas menores */
 @media (max-width: 600px) {
     .lista-pokemons {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
-
     .card img {
         width: 100px;
         height: 100px;
