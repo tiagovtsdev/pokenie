@@ -6,29 +6,168 @@ const POR_PAGINA = 18;
 let paginaAtual = 1;
 let totalPokemons = 0;
 
+let carregando = false;
+
+function mostrarLoader(mensagem) {
+  const loader = document.getElementById("loader");
+  const loaderTexto = document.getElementById("loaderTexto");
+
+  if (loaderTexto && mensagem) {
+    loaderTexto.textContent = mensagem;
+  }
+  if (loader) {
+    loader.classList.remove("some");
+  }
+}
+
+function esconderLoader() {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    loader.classList.add("some");
+  }
+}
+
+function traduzirErro(erro) {
+  if (!navigator.onLine) {
+    return "Você está sem conexão com a internet. Verifique sua rede e tente novamente.";
+  }
+  if (erro && erro.message === "HTTP_404") {
+    return "Pokémon não encontrado na PokéAPI.";
+  }
+  if (erro && erro.message && erro.message.startsWith("HTTP_5")) {
+    return "A PokéAPI está temporariamente instável. Tente novamente em instantes.";
+  }
+  return "Não foi possível carregar os dados da PokéAPI. Verifique sua conexão e tente novamente.";
+}
+
+function criarCaixaErro(mensagem, aoTentarNovamente, mostrarBotaoInicio) {
+  const caixa = document.createElement("div");
+  caixa.className = "estado-erro";
+  caixa.setAttribute("role", "alert");
+
+  const icone = document.createElement("i");
+  icone.className = !navigator.onLine
+    ? "bi bi-wifi-off"
+    : "bi bi-exclamation-triangle-fill";
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = "Ops! Algo deu errado";
+
+  const texto = document.createElement("p");
+  texto.textContent = mensagem;
+
+  const acoes = document.createElement("div");
+  acoes.className = "erro-acoes";
+
+  const btnRetry = document.createElement("button");
+  btnRetry.type = "button";
+  btnRetry.className = "btn-retry";
+  btnRetry.textContent = "Tentar novamente";
+  btnRetry.addEventListener("click", aoTentarNovamente);
+  acoes.appendChild(btnRetry);
+
+  if (mostrarBotaoInicio) {
+    const linkInicio = document.createElement("a");
+    linkInicio.href = "../home/index.html";
+    linkInicio.className = "btn-voltar";
+    linkInicio.textContent = "Voltar para a Pokédex";
+    acoes.appendChild(linkInicio);
+  }
+
+  caixa.append(icone, titulo, texto, acoes);
+  return caixa;
+}
+
+function mostrarSkeletons(quantidade) {
+  if (!container) return;
+
+  container.replaceChildren();
+  for (let i = 0; i < quantidade; i++) {
+    const card = document.createElement("div");
+    card.className = "card-skeleton";
+    card.setAttribute("aria-hidden", "true");
+    card.innerHTML = `
+            <span class="skeleton-bloco skeleton-id"></span>
+            <div class="skeleton-bloco skeleton-img"></div>
+            <span class="skeleton-bloco skeleton-nome"></span>
+            <span class="skeleton-bloco skeleton-tipos"></span>
+        `;
+    container.appendChild(card);
+  }
+}
+
 async function buscarPokemons(pagina) {
   const offset = (pagina - 1) * POR_PAGINA;
-
   const resposta = await fetch(
     URL_API + "?limit=" + POR_PAGINA + "&offset=" + offset,
   );
 
   if (!resposta.ok) {
-    throw new Error("Erro na API: " + resposta.status);
+    throw new Error("HTTP_" + resposta.status);
   }
 
   const dados = await resposta.json();
   totalPokemons = dados.count;
 
   const detalhes = await Promise.all(
-    dados.results.map(function (item) {
-      return fetch(item.url).then(function (r) {
-        return r.json();
-      });
+    dados.results.map(async function (item) {
+      const r = await fetch(item.url);
+      if (!r.ok) {
+        throw new Error("HTTP_" + r.status);
+      }
+      return r.json();
     }),
   );
 
   return detalhes;
+}
+
+async function carregarPokemons(pagina) {
+  if (carregando) return;
+  carregando = true;
+
+  const btnAnterior = document.getElementById("btnAnterior");
+  const btnProxima = document.getElementById("btnProxima");
+  const paginacao = document.getElementById("paginacao");
+
+  if (btnAnterior) btnAnterior.disabled = true;
+  if (btnProxima) btnProxima.disabled = true;
+
+  const primeiroCarregamento = listaPokemons.length === 0;
+  if (primeiroCarregamento) {
+    mostrarLoader("Carregando Pokémons...");
+  } else {
+    mostrarSkeletons(POR_PAGINA);
+  }
+
+  try {
+    listaPokemons = await buscarPokemons(pagina);
+    paginaAtual = pagina;
+    primeiraExibicao = true;
+
+    if (paginacao) paginacao.style.display = "flex";
+    mostrarPokemons(listaPokemons);
+    atualizarPaginacao();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (erro) {
+    console.error("Não foi possível carregar os Pokémon:", erro);
+
+    if (paginacao) paginacao.style.display = "none";
+    if (container) {
+      container.replaceChildren(
+        criarCaixaErro(
+          traduzirErro(erro),
+          function () {
+            carregarPokemons(pagina);
+          },
+          false,
+        ),
+      );
+    }
+  } finally {
+    carregando = false;
+    esconderLoader();
+  }
 }
 
 function atualizarPaginacao() {
@@ -45,19 +184,6 @@ function atualizarPaginacao() {
   infoPagina.textContent = "Página " + paginaAtual + " de " + totalPaginas;
   btnAnterior.disabled = paginaAtual === 1;
   btnProxima.disabled = paginaAtual >= totalPaginas;
-}
-
-async function carregarPokemons(pagina) {
-  try {
-    listaPokemons = await buscarPokemons(pagina);
-    paginaAtual = pagina;
-    primeiraExibicao = true;
-    mostrarPokemons(listaPokemons);
-    atualizarPaginacao();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } catch (erro) {
-    console.error("Não foi possível carregar os Pokémon:", erro);
-  }
 }
 
 const container = document.getElementById("listaDePokemons");
@@ -268,12 +394,3 @@ if (container && !window.location.pathname.includes("favorites")) {
 
   carregarPokemons(1);
 }
-
-const loader = document.getElementById("loader");
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    if (loader) {
-      loader.classList.add("some");
-    }
-  }, 700);
-});

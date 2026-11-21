@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="./details.css" />
   </head>
   <body>
+    <div id="loader" class="loader" role="status" aria-live="polite">
+      <img
+        src="../assets/assets5.png"
+        alt="Carregando Pokémon"
+        class="mewtwo-loader"
+      />
+      <p id="loaderTexto" class="loader-texto">Carregando detalhes...</p>
+    </div>
+
     <header class="cabecalho">
       <div class="logopokenie">
         <a href="../home/index.html">
@@ -58,7 +67,9 @@
       </nav>
     </header>
 
-    <main class="detalhes">
+    <div id="erroDetalhes" class="container-erro-detalhes" hidden></div>
+
+    <main id="conteudoDetalhes" class="detalhes">
       <img id="fundoPokemon" class="fundo-pokemon" alt="" />
 
       <!-- painel principal (esquerda) -->
@@ -151,6 +162,6 @@
     </footer>
 
     <script src="../js/pokedex.js"></script>
-    <script src="../js/details.js"></script>
+    <script src="./details.js"></script>
   </body>
 </html>

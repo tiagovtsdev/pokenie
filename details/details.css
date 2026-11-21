@@ -811,3 +811,102 @@ body {
     padding: 16px;
   }
 }
+
+/* Ajuste do loader para empilhar imagem + texto */
+.loader {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loader-texto {
+  font-family: var(--fonte-secundaria);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cor-branca);
+  letter-spacing: 0.5px;
+}
+
+/* Card de erro de comunicação */
+.estado-erro {
+  grid-column: 1 / -1;
+  max-width: 460px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  background-color: var(--cor-branca);
+  border: 3px solid var(--pokedex-escuro);
+  border-radius: 18px;
+  box-shadow: 0 6px 0 var(--pokedex-escuro);
+  color: var(--pokedex-escuro);
+}
+
+.estado-erro i {
+  font-size: 44px;
+  color: #c22e28;
+}
+
+.estado-erro h2 {
+  font-family: var(--fonte-secundaria);
+  font-size: 22px;
+  color: var(--pokedex-escuro);
+}
+
+.estado-erro p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.erro-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-retry,
+.btn-voltar {
+  padding: 10px 20px;
+  border: 3px solid var(--pokedex-escuro);
+  border-radius: 999px;
+  font-family: var(--fonte-secundaria);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.btn-retry {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+}
+
+.btn-voltar {
+  background-color: var(--cor-branca);
+  color: var(--pokedex-escuro);
+}
+
+.btn-retry:hover,
+.btn-voltar:hover {
+  transform: translateY(-3px);
+}
+
+.container-erro-detalhes {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.container-erro-detalhes[hidden],
+.detalhes[hidden] {
+  display: none;
+}

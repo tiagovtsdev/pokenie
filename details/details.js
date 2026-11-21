@@ -15,7 +15,7 @@ async function buscarJson(url) {
   const resposta = await fetch(url);
 
   if (!resposta.ok) {
-    throw new Error("Erro na API: " + resposta.status);
+    throw new Error("HTTP_" + resposta.status);
   }
 
   return resposta.json();
@@ -229,6 +229,19 @@ function configurarFavorito(pokemon) {
 }
 
 async function carregarDetalhes() {
+  const conteudo = document.getElementById("conteudoDetalhes");
+  const caixaErro = document.getElementById("erroDetalhes");
+
+  mostrarLoader("Carregando detalhes do Pokémon...");
+
+  if (caixaErro) {
+    caixaErro.hidden = true;
+    caixaErro.replaceChildren();
+  }
+  if (conteudo) {
+    conteudo.hidden = false;
+  }
+
   try {
     const pokemon = await buscarJson(API + "pokemon/" + idPokemon);
     const especie = await buscarJson(pokemon.species.url);
@@ -278,6 +291,16 @@ async function carregarDetalhes() {
     configurarVizinho("linkProximo", pokemon.id + 1, "proximo");
   } catch (erro) {
     console.error("Não foi possível carregar os detalhes:", erro);
+
+    if (conteudo) conteudo.hidden = true;
+    if (caixaErro) {
+      caixaErro.hidden = false;
+      caixaErro.appendChild(
+        criarCaixaErro(traduzirErro(erro), carregarDetalhes, true),
+      );
+    }
+  } finally {
+    esconderLoader();
   }
 }
 
