@@ -206,12 +206,14 @@ nav a:hover {
 }
 
 .tipo {
-    padding: 3px 12px;
-    border-radius: 999px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     color: var(--cor-branca);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: capitalize;
+    font-size: 14px;
     background-color: #777;
 }
 /* cores dos elementos correspondentes dos pokemons */
@@ -309,4 +311,98 @@ nav a:hover {
         width: 100px;
         height: 100px;
     }
+}
+
+/* botões de paginação */
+.paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 24px 32px;
+    color: var(--cor-branca);
+    font-weight: 700;
+}
+
+.paginacao button {
+    padding: 10px 22px;
+    border: 3px solid var(--pokedex-escuro);
+    border-radius: 999px;
+    background-color: var(--cor-branca);
+    color: var(--pokedex-escuro);
+    font-family: var(--fonte-secundaria);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.paginacao button:hover:not(:disabled) {
+    transform: translateY(-3px);
+}
+
+.paginacao button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* balãozinho com o nome do tipo */
+.tipo {
+    position: relative;
+    cursor: default;
+}
+
+.tipo::after {
+    content: attr(data-nome);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: inherit;
+    color: var(--cor-branca);
+    font-family: var(--fonte-secundaria);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+    white-space: nowrap;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(6px) scale(0.8);
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* setinha do balão */
+.tipo::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) rotate(45deg);
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.tipo:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.tipo:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card {
+    cursor: pointer;
 }
