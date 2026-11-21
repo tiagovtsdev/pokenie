@@ -1,118 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Details - Pokénie</title>
-    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./details.css">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./details.css" />
+  </head>
+  <body>
     <header class="cabecalho">
-        <div class="logopokenie">
-            <a href="../home/index.html">
-                <img src="../assets/logoPokénie_2.png" alt="Logo Pokénie" width="150">
-            </a>
-        </div>
-        <div class="barra-de-pesquisa">
-            <button class="search-button">
-                <img src="../assets/assets1.png" alt="Search" width="30">
-            </button>
-            <input type="text" id="pesquisaPokemon" placeholder="Search your pokemon!" aria-label="Pesquisar Pokémon pelo nome">
-            <button class="filter-button">
-                <img src="../assets/filtro.png" alt="Filter" width="30">
-            </button>
-        </div>
-        <nav class="menu">
-            <a href="../favorites/favorites.html">
-                <img src="../assets/assets2.png" alt="My Favorites" width="38">
-                My Favorites
-            </a>
-            <a href="#">
-                <img src="../assets/gearicon.png" alt="Settings" width="38">
-                Settings
-            </a>
-        </nav>
+      <div class="logopokenie">
+        <a href="../home/index.html">
+          <img
+            src="../assets/logoPokénie_2.png"
+            alt="Logo Pokénie"
+            width="150"
+          />
+        </a>
+      </div>
+      <div class="barra-de-pesquisa">
+        <button class="search-button">
+          <img src="../assets/assets1.png" alt="Search" width="30" />
+        </button>
+        <input
+          type="text"
+          id="pesquisaPokemon"
+          placeholder="Search your pokemon!"
+          aria-label="Pesquisar Pokémon pelo nome"
+        />
+        <button class="filter-button">
+          <img src="../assets/filtro.png" alt="Filter" width="30" />
+        </button>
+      </div>
+      <nav class="menu">
+        <a href="../favorites/favorites.html">
+          <img src="../assets/assets2.png" alt="My Favorites" width="38" />
+          My Favorites
+        </a>
+        <a href="#">
+          <img src="../assets/gearicon.png" alt="Settings" width="38" />
+          Settings
+        </a>
+      </nav>
     </header>
 
     <main class="detalhes">
-        <img id="fundoPokemon" class="fundo-pokemon" alt="">
+      <img id="fundoPokemon" class="fundo-pokemon" alt="" />
 
-        <!-- painel principal (esquerda) -->
-        <section class="painel painel-principal">
-            <button id="botaoFavorito" class="botao-favorito" type="button" aria-label="Favoritar">
-                <img src="../assets/favorito.png" alt="">
-            </button>
-            <img id="imagemPokemon" class="imagem-principal" alt="">
-            <span id="idPokemon" class="id-detalhe"></span>
-            <div class="linha-nome">
-                <h1 id="nomePokemon"></h1>
-                <div id="tiposPokemon" class="card-tipos"></div>
-            </div>
-            <div class="linha-tags">
-                <span id="generoPokemon" class="tag"></span>
-                <span id="categoriaPokemon" class="tag"></span>
-            </div>
-            <div id="evolucoes" class="evolucoes"></div>
-        </section>
+      <!-- painel principal (esquerda) -->
+      <section class="painel painel-principal">
+        <button
+          id="botaoFavorito"
+          class="botao-favorito"
+          type="button"
+          aria-label="Favoritar"
+        >
+          <img src="../assets/favorito.png" alt="" />
+        </button>
+        <img id="imagemPokemon" class="imagem-principal" alt="" />
+        <span id="idPokemon" class="id-detalhe"></span>
+        <div class="linha-nome">
+          <h1 id="nomePokemon"></h1>
+          <div id="tiposPokemon" class="card-tipos"></div>
+        </div>
+        <div class="linha-tags">
+          <span id="generoPokemon" class="tag"></span>
+          <span id="categoriaPokemon" class="tag"></span>
+        </div>
+        <div id="evolucoes" class="evolucoes"></div>
+      </section>
 
-        <!-- centro -->
-        <section class="painel painel-sobre">
-            <h2>About</h2>
-            <p id="sobrePokemon"></p>
-        </section>
+      <!-- centro -->
+      <section class="painel painel-sobre">
+        <h2>About</h2>
+        <p id="sobrePokemon"></p>
+      </section>
 
-        <section class="painel painel-habilidades">
-            <h2>Abilities</h2>
-            <div id="habilidades" class="lista-habilidades"></div>
-        </section>
+      <section class="painel painel-habilidades">
+        <h2>Abilities</h2>
+        <div id="habilidades" class="lista-habilidades"></div>
+      </section>
 
-        <nav class="painel navegacao-ids">
-            <a id="linkAnterior" href="#"></a>
-            <a id="linkProximo" href="#"></a>
-        </nav>
+      <nav class="painel navegacao-ids">
+        <a id="linkAnterior" href="#"></a>
+        <a id="linkProximo" href="#"></a>
+      </nav>
 
-        <!-- direita -->
-        <section class="painel painel-info">
-            <h2>Informations</h2>
-            <div class="grade-info">
-                <div class="caixa-info"><h3>Height</h3><p id="alturaPokemon"></p></div>
-                <div class="caixa-info"><h3>Weight</h3><p id="pesoPokemon"></p></div>
-                <div class="caixa-info"><h3>Weakness</h3><div id="fraquezas" class="lista-fraquezas"></div></div>
-                <div class="caixa-info"><h3>Base EXP</h3><p id="expPokemon"></p></div>
-            </div>
-        </section>
+      <!-- direita -->
+      <section class="painel painel-info">
+        <h2>Informations</h2>
+        <div class="grade-info">
+          <div class="caixa-info">
+            <h3>Height</h3>
+            <p id="alturaPokemon"></p>
+          </div>
+          <div class="caixa-info">
+            <h3>Weight</h3>
+            <p id="pesoPokemon"></p>
+          </div>
+          <div class="caixa-info">
+            <h3>Weakness</h3>
+            <div id="fraquezas" class="lista-fraquezas"></div>
+          </div>
+          <div class="caixa-info">
+            <h3>Base EXP</h3>
+            <p id="expPokemon"></p>
+          </div>
+        </div>
+      </section>
 
-        <section class="painel painel-stats">
-            <h2>Stats</h2>
-            <div id="statsPokemon" class="lista-stats"></div>
-        </section>
+      <section class="painel painel-stats">
+        <h2>Stats</h2>
+        <div id="statsPokemon" class="lista-stats"></div>
+      </section>
     </main>
 
     <footer class="copyright">
-        <div class="footer-left">
-            <img src="../assets/logoPokénie.png" alt="Pokénie Icon" width="50">
-            <div class="footer-left-texts">
-                <div>&copy; 2026 The Pokénie Association.* All rights reserved.</div>
-                <div class="affiliation">*We have no affiliation with The Pokémon&copy; Company.</div>
-            </div>
+      <div class="footer-left">
+        <img src="../assets/logoPokénie.png" alt="Pokénie Icon" width="50" />
+        <div class="footer-left-texts">
+          <div>&copy; 2026 The Pokénie Association.* All rights reserved.</div>
+          <div class="affiliation">
+            *We have no affiliation with The Pokémon&copy; Company.
+          </div>
         </div>
-        <div class="footer-right">
-            <div class="social-icons">
-                <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" aria-label="Discord"><i class="bi bi-discord"></i></a>
-                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            </div>
-            <div class="social-text">Our official social networks</div>
+      </div>
+      <div class="footer-right">
+        <div class="social-icons">
+          <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Discord"><i class="bi bi-discord"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
+        <div class="social-text">Our official social networks</div>
+      </div>
     </footer>
 
     <script src="../js/pokedex.js"></script>
     <script src="../js/details.js"></script>
-</body>
+  </body>
 </html>
