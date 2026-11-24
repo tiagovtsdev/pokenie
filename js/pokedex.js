@@ -360,19 +360,60 @@ function mostrarPokemons(lista) {
   primeiraExibicao = false;
 }
 
+let todosOsPokemons = [];
+
+async function pesquisarPokemons(texto) {
+  const termo = texto.trim().toLowerCase();
+
+  // campo vazio: volta para a lista normal
+  if (termo === "") {
+    mostrarPokemons(listaPokemons);
+    return;
+  }
+
+  // 1) baixa a lista com TODOS os nomes (só na primeira vez)
+  if (todosOsPokemons.length === 0) {
+    const resposta = await fetch(URL_API + "?limit=100000");
+    const dados = await resposta.json();
+    todosOsPokemons = dados.results;
+  }
+
+  // 2) filtra pelo nome ou pelo id
+  const achados = todosOsPokemons.filter(function (item) {
+    const id = item.url.split("/")[6];
+    return item.name.includes(termo) || id === termo;
+  });
+
+  // 3) busca os detalhes só dos primeiros 18 achados
+  const detalhes = await Promise.all(
+    achados.slice(0, POR_PAGINA).map(function (item) {
+      return fetch(item.url).then(function (r) {
+        return r.json();
+      });
+    }),
+  );
+
+  // 4) mostra na tela
+  mostrarPokemons(detalhes);
+}
+
+function pesquisarNosFavoritos(texto) {
+  const termo = texto.trim().toLowerCase();
+
+  const resultado = recuperarPokemons().filter(function (pokemon) {
+    return pokemon.name.includes(termo) || String(pokemon.id) === termo;
+  });
+
+  mostrarPokemons(resultado);
+}
+
 if (campoPesquisa) {
   campoPesquisa.addEventListener("input", function () {
-    const termo = campoPesquisa.value.trim().toLowerCase();
-
-    const listaParaPesquisar = window.location.pathname.includes("favorites")
-      ? recuperarPokemons()
-      : listaPokemons;
-
-    const resultado = listaParaPesquisar.filter(function (pokemon) {
-      return pokemon.name.toLowerCase().includes(termo);
-    });
-
-    mostrarPokemons(resultado);
+    if (window.location.pathname.includes("favorites")) {
+      pesquisarNosFavoritos(campoPesquisa.value);
+    } else if (container) {
+      pesquisarPokemons(campoPesquisa.value);
+    }
   });
 }
 
