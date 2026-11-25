@@ -1,7 +1,8 @@
-const listaPokemons = [
+export const listaPokemons = [
     {
         "id": 62,
         "name": "poliwrath",
+        "genus": "Tadpole Pokémon",
         "about": "Is a dual-type Water/Fighting Pokémon introduced in Generation I. It is known as the Tadpole Pokémon and evolves from Poliwhirl when exposed to a Water Stone.",
         "gender_rate": {
             "male_percentage": 50.0,
@@ -11,6 +12,9 @@ const listaPokemons = [
         "height": 13,
         "weight": 540,
         "base_experience": 255,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/62.png"
+        },
         "abilities": [
             {
                 "ability": { "name": "water-absorb", "url": "https://pokeapi.co" },
@@ -52,6 +56,7 @@ const listaPokemons = [
     {
         "id": 448,
         "name": "lucario",
+        "genus": "Aura Pokémon",
         "about": "A Fighting and Steel type. Lucario is a bipedal, canine-like Pokémon that possesses the unique ability to sense and manipulate a special energy called Aura. By reading the aura of its opponents, it can predict their movements and track them from over half a mile away. Extremely loyal to its Trainer, Lucario has a strong sense of justice and can communicate through telepathy.",
         "gender_rate": {
             "male_percentage": 87.5,
@@ -61,6 +66,9 @@ const listaPokemons = [
         "height": 12,
         "weight": 540,
         "base_experience": 184,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
+        },
         "abilities": [
             {
                 "ability": { "name": "steadfast", "url": "https://pokeapi.co" },
@@ -102,6 +110,7 @@ const listaPokemons = [
     {
         "id": 493,
         "name": "arceus",
+        "genus": "Alpha Pokémon",
         "about": "Is one of the most unique and dynamic assets in the Pokémon franchise due to its form-changing mechanic. Known as the creator deity of the Pokémon universe, its design blends equine, centaur-like, and celestial elements into a majestic, holy silhouette.",
         "gender_rate": {
             "male_percentage": 0.0,
@@ -111,6 +120,9 @@ const listaPokemons = [
         "height": 32,
         "weight": 3200,
         "base_experience": 324,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png"
+        },
         "abilities": [
             {
                 "ability": { "name": "multitype", "url": "https://pokeapi.co" },
@@ -141,6 +153,7 @@ const listaPokemons = [
     {
         "id": 658,
         "name": "greninja",
+        "genus": "Ninja Pokémon",
         "about": "A Water and Dark type known as the Ninja Pokémon. It is the final evolution of Froakie, introduced in Generation VI. Greninja moves with incredible speed, hurling compressed water shurikens from its palms to slice through its foes.",
         "gender_rate": {
             "male_percentage": 87.5,
@@ -189,6 +202,7 @@ const listaPokemons = [
     {
         "id": 63,
         "name": "abra",
+        "genus": "Psi Pokémon",
         "about": "A Psychic type known as the Psi Pokémon, introduced in Generation I. Abra sleeps up to 18 hours a day and teleports away the moment it senses danger, even while asleep. It evolves into Kadabra, which in turn evolves into Alakazam.",
         "gender_rate": {
             "male_percentage": 75.0,
@@ -241,6 +255,7 @@ const listaPokemons = [
     {
         "id": 137,
         "name": "porygon",
+        "genus": "Virtual Pokémon",
         "about": "A Normal type known as the Virtual Pokémon, introduced in Generation I. It is the first artificial Pokémon, made entirely of programming code, which allows it to move freely through cyberspace. It evolves into Porygon2 and then Porygon-Z.",
         "gender_rate": {
             "male_percentage": 0.0,
@@ -293,6 +308,7 @@ const listaPokemons = [
     {
         "id": 94,
         "name": "gengar",
+        "genus": "Shadow Pokémon",
         "about": "A Ghost and Poison type known as the Shadow Pokémon, introduced in Generation I. It hides in the shadows and is said to lower the temperature of a room by several degrees when it lurks nearby. It evolves from Haunter through trading.",
         "gender_rate": {
             "male_percentage": 50.0,
@@ -336,6 +352,7 @@ const listaPokemons = [
     {
         "id": 133,
         "name": "eevee",
+        "genus": "Evolution Pokémon",
         "about": "A Normal type known as the Evolution Pokémon, introduced in Generation I. Its unstable genetic makeup lets it adapt to its environment, evolving into one of eight different forms: Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon or Sylveon.",
         "gender_rate": {
             "male_percentage": 87.5,
@@ -388,6 +405,7 @@ const listaPokemons = [
     {
         "id": 3,
         "name": "venusaur",
+        "genus": "Seed Pokémon",
         "about": "A Grass and Poison type known as the Seed Pokémon, introduced in Generation I. The large flower on its back absorbs sunlight and turns it into energy, and its scent calms the emotions of those nearby. It is the final evolution of Bulbasaur.",
         "gender_rate": {
             "male_percentage": 87.5,
@@ -436,6 +454,7 @@ const listaPokemons = [
     {
         "id": 149,
         "name": "dragonite",
+        "genus": "Dragon Pokémon",
         "about": "A Dragon and Flying type known as the Dragon Pokémon, introduced in Generation I. Despite its massive size, it can circle the globe in 16 hours, and it is said to guide lost ships to safety through storms. It is the final evolution of Dratini.",
         "gender_rate": {
             "male_percentage": 50.0,
@@ -480,175 +499,133 @@ const listaPokemons = [
         },
         "weaknesses": ["ice", "rock", "dragon", "fairy"]
     },
+
+    {
+        "id": 6,
+        "name": "charizard",
+        "genus": "Flame Pokémon",
+        "about": "A Fire and Flying type known as the Flame Pokémon, introduced in Generation I. It flies around the sky in search of powerful opponents, and the flame at the tip of its tail burns hotter after tough battles. It is the final evolution of Charmander.",
+        "gender_rate": {
+            "male_percentage": 87.5,
+            "female_percentage": 12.5,
+            "genderless": false
+        },
+        "height": 17,
+        "weight": 905,
+        "base_experience": 267,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+        },
+        "abilities": [
+            {
+                "ability": { "name": "blaze", "url": "https://pokeapi.co" },
+                "is_hidden": false,
+                "slot": 1
+            },
+            {
+                "ability": { "name": "solar-power", "url": "https://pokeapi.co" },
+                "is_hidden": true,
+                "slot": 3
+            }
+        ],
+        "types": [
+            { "slot": 1, "type": { "name": "fire", "url": "https://pokeapi.co/api/v2/type/10/" } },
+            { "slot": 2, "type": { "name": "flying", "url": "https://pokeapi.co/api/v2/type/3/" } }
+        ],
+        "stats": [
+            { "base_stat": 78, "effort": 0, "stat": { "name": "hp", "url": "https://pokeapi.co" } },
+            { "base_stat": 84, "effort": 0, "stat": { "name": "attack", "url": "https://pokeapi.co" } },
+            { "base_stat": 78, "effort": 0, "stat": { "name": "defense", "url": "https://pokeapi.co" } },
+            { "base_stat": 109, "effort": 3, "stat": { "name": "special-attack", "url": "https://pokeapi.co" } },
+            { "base_stat": 85, "effort": 0, "stat": { "name": "special-defense", "url": "https://pokeapi.co" } },
+            { "base_stat": 100, "effort": 0, "stat": { "name": "speed", "url": "https://pokeapi.co" } }
+        ],
+        "total_base_stat": 534,
+        "evolution_chain": {
+            "from": "charmeleon",
+            "trigger": "level-up",
+            "full_chain": ["charmander", "charmeleon", "charizard"]
+        },
+        "weaknesses": ["water", "electric", "rock"]
+    },
+
+    {
+        "id": 25,
+        "name": "pikachu",
+        "genus": "Mouse Pokémon",
+        "about": "An Electric type known as the Mouse Pokémon, introduced in Generation I. It stores electricity in the red pouches on its cheeks and releases it when threatened. It evolves from Pichu through friendship and into Raichu with a Thunder Stone.",
+        "gender_rate": {
+            "male_percentage": 50.0,
+            "female_percentage": 50.0,
+            "genderless": false
+        },
+        "height": 4,
+        "weight": 60,
+        "base_experience": 112,
+        "sprites": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+        },
+        "abilities": [
+            {
+                "ability": { "name": "static", "url": "https://pokeapi.co" },
+                "is_hidden": false,
+                "slot": 1
+            },
+            {
+                "ability": { "name": "lightning-rod", "url": "https://pokeapi.co" },
+                "is_hidden": true,
+                "slot": 3
+            }
+        ],
+        "types": [
+            { "slot": 1, "type": { "name": "electric", "url": "https://pokeapi.co/api/v2/type/13/" } }
+        ],
+        "stats": [
+            { "base_stat": 35, "effort": 0, "stat": { "name": "hp", "url": "https://pokeapi.co" } },
+            { "base_stat": 55, "effort": 0, "stat": { "name": "attack", "url": "https://pokeapi.co" } },
+            { "base_stat": 40, "effort": 0, "stat": { "name": "defense", "url": "https://pokeapi.co" } },
+            { "base_stat": 50, "effort": 0, "stat": { "name": "special-attack", "url": "https://pokeapi.co" } },
+            { "base_stat": 50, "effort": 0, "stat": { "name": "special-defense", "url": "https://pokeapi.co" } },
+            { "base_stat": 90, "effort": 2, "stat": { "name": "speed", "url": "https://pokeapi.co" } }
+        ],
+        "total_base_stat": 320,
+        "evolution_chain": {
+            "from": "pichu",
+            "trigger": "high-friendship",
+            "full_chain": ["pichu", "pikachu", "raichu"]
+        },
+        "weaknesses": ["ground"]
+    },
 ];
 
-const container = document.getElementById("listaDePokemons");
-const campoPesquisa = document.getElementById("pesquisaPokemon");
+export const idsDeEvolucao = {
+    "bulbasaur": 1, "ivysaur": 2, "venusaur": 3,
+    "charmander": 4, "charmeleon": 5, "charizard": 6,
+    "pichu": 172, "pikachu": 25, "raichu": 26,
+    "poliwag": 60, "poliwhirl": 61, "poliwrath": 62,
+    "abra": 63, "kadabra": 64, "alakazam": 65,
+    "gastly": 92, "haunter": 93, "gengar": 94,
+    "eevee": 133, "vaporeon": 134, "jolteon": 135, "flareon": 136,
+    "espeon": 196, "umbreon": 197, "leafeon": 470, "glaceon": 471, "sylveon": 700,
+    "porygon": 137, "porygon2": 233, "porygon-z": 474,
+    "dratini": 147, "dragonair": 148, "dragonite": 149,
+    "riolu": 447, "lucario": 448,
+    "froakie": 656, "frogadier": 657, "greninja": 658,
+    "arceus": 493
+};
 
-let primeiraExibicao = true;
-
-// Lista que está sendo exibida na página
-let listaAtual = listaPokemons;
-
-function recuperarPokemons() {
-    return JSON.parse(localStorage.getItem("pokemons")) || [];
-}
-
-function salvarPokemon(pokemon) {
-    const favoritos = recuperarPokemons();
-
-    const jaExiste = favoritos.some(function (p) {
-        return p.id === pokemon.id;
-    });
-
-    if (!jaExiste) {
-        favoritos.push(pokemon);
-        localStorage.setItem("pokemons", JSON.stringify(favoritos));
-    }
-}
-
-function removerFavorito(id) {
-    const favoritos = recuperarPokemons();
-
-    const favoritosAtualizados = favoritos.filter(function (pokemon) {
-        return pokemon.id !== id;
-    });
-
-    localStorage.setItem("pokemons", JSON.stringify(favoritosAtualizados));
-}
-
-function ehFavorito(id) {
-    const favoritos = recuperarPokemons();
-
-    return favoritos.some(function (pokemon) {
-        return pokemon.id === id;
-    });
-}
-
-function imagemDoPokemon(pokemon) {
-    if (pokemon.sprites && pokemon.sprites.front_default) {
-        return pokemon.sprites.front_default;
-    }
-
-    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png";
-}
-
-function criarCard(pokemon) {
-    const card = document.createElement("article");
-    card.classList.add("card");
-
-    const id = document.createElement("span");
-    id.classList.add("card-id");
-    id.textContent = "#" + String(pokemon.id).padStart(3, "0");
-
-    const imagem = document.createElement("img");
-    imagem.src = imagemDoPokemon(pokemon);
-    imagem.alt = pokemon.name;
-    imagem.loading = "lazy";
-
-    const nome = document.createElement("h2");
-    nome.textContent = pokemon.name;
-
-    const medidas = document.createElement("p");
-    medidas.textContent = "Height: " + pokemon.height + " | Weight: " + pokemon.weight;
-
-    const tipos = document.createElement("div");
-    tipos.classList.add("card-tipos");
-    pokemon.types.forEach(function (tipo) {
-        const etiqueta = document.createElement("span");
-        etiqueta.classList.add("tipo", "tipo-" + tipo.type.name);
-        etiqueta.textContent = tipo.type.name;
-        tipos.appendChild(etiqueta);
-    });
-
-    const botaoFavorito = document.createElement("button");
-    botaoFavorito.type = "button";
-    botaoFavorito.classList.add("botao-favorito");
-    botaoFavorito.textContent = ehFavorito(pokemon.id)
-        ? "❤️ Remover favorito"
-        : "🩶 Favoritar";
-
-    botaoFavorito.setAttribute(
-        "aria-label",
-        "Alternar favorito de " + pokemon.name
-    );
-
-    botaoFavorito.addEventListener("click", function () {
-        if (ehFavorito(pokemon.id)) {
-            removerFavorito(pokemon.id);
-        } else {
-            salvarPokemon(pokemon);
-        }
-
-        if (window.location.pathname.includes("favorites")) {
-            mostrarPokemons(recuperarPokemons());
-        } else {
-            mostrarPokemons(listaAtual);
-        }
-    });
-
-    card.append(id, imagem, nome, medidas, tipos, botaoFavorito);
-
-    return card;
-}
-
-function mostrarPokemons(lista) {
-    if (!container) {
-        return;
-    }
-
-    listaAtual = lista;
-    container.replaceChildren();
-
-    if (lista.length === 0) {
-        const mensagem = document.createElement("p");
-        mensagem.textContent = "Nenhum Pokémon encontrado.";
-        container.appendChild(mensagem);
-        return;
-    }
-
-    lista.forEach(function (pokemon, indice) {
-        const card = criarCard(pokemon);
-
-        if (primeiraExibicao) {
-            card.classList.add("entrada");
-            card.style.animationDelay = indice * 80 + "ms";
-        }
-
-        container.appendChild(card);
-    });
-
-    primeiraExibicao = false;
-}
-
-if (campoPesquisa) {
-    campoPesquisa.addEventListener("input", function () {
-        const termo = campoPesquisa.value.trim().toLowerCase();
-
-        const listaParaPesquisar = window.location.pathname.includes("favorites")
-            ? recuperarPokemons()
-            : listaPokemons;
-
-        const resultado = listaParaPesquisar.filter(function (pokemon) {
-            return pokemon.name.toLowerCase().includes(termo);
-        });
-
-        mostrarPokemons(resultado);
-    });
-}
-
-if (container) {
-    mostrarPokemons(listaPokemons);
-}
-
-const inicioDoCarregamento = Date.now();
-window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    if (!loader) {
-        return;
-    }
-    const espera = Math.max(0, 700 - (Date.now() - inicioDoCarregamento));
-    setTimeout(function () {
-        loader.classList.add("some");
-    }, espera);
-});
+export const tiposDeEvolucao = {
+    "bulbasaur": ["grass", "poison"], "ivysaur": ["grass", "poison"], "venusaur": ["grass", "poison"],
+    "charmander": ["fire"], "charmeleon": ["fire"], "charizard": ["fire", "flying"],
+    "pichu": ["electric"], "pikachu": ["electric"], "raichu": ["electric"],
+    "poliwag": ["water"], "poliwhirl": ["water"], "poliwrath": ["water", "fighting"],
+    "abra": ["psychic"], "kadabra": ["psychic"], "alakazam": ["psychic"],
+    "gastly": ["ghost", "poison"], "haunter": ["ghost", "poison"], "gengar": ["ghost", "poison"],
+    "eevee": ["normal"], "vaporeon": ["water"], "jolteon": ["electric"], "flareon": ["fire"],
+    "espeon": ["psychic"], "umbreon": ["dark"], "leafeon": ["grass"], "glaceon": ["ice"], "sylveon": ["fairy"],
+    "porygon": ["normal"], "porygon2": ["normal"], "porygon-z": ["normal"],
+    "dratini": ["dragon"], "dragonair": ["dragon"], "dragonite": ["dragon", "flying"],
+    "riolu": ["fighting"], "lucario": ["fighting", "steel"],
+    "froakie": ["water"], "frogadier": ["water"], "greninja": ["water", "dark"],
+    "arceus": ["normal"]
+};

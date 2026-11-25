@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <!-- configuração padrão do HTML -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites</title>
+    <title>My Favorites | Pokénie</title>
     <!-- logo na aba do navegador (favicon) -->
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
     <!-- importação de fontes (Google Fonts) -->
@@ -14,42 +14,58 @@
     <!-- importação dos ícones (bootstrap) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- link redirecionado para o CSS externo -->
-    <link rel="stylesheet" href="./favorites.css">
+    <link rel="stylesheet" href="../favorites/favorites.css">
 </head>
 <body>
+    <div id="loader" class="loader" role="status" aria-live="polite">
+        <img src="../assets/assets5.png" alt="Loading...">
+    </div>
     <!-- cabeçalho principal do header -->
     <header class="cabecalho">
         <div class="logopokenie">
             <a href="../home/index.html">
-                <img src="../assets/logoPokénie_2.png" alt="Logo Pokénie" width="150">
+                <img src="../assets/logoPokénie_2.png" alt="Pokénie logo" width="150">
             </a>
         </div>
-        <!-- section central (barra de pesquisa) -->
+        <!-- barra de pesquisa -->
         <div class="barra-de-pesquisa">
-            <button class="search-button">
-                <img src="../assets/assets1.png" alt="Search" width="30">
-            </button>
-            <input type="text" id="pesquisaPokemon" placeholder="Search your pokemon!" aria-label="Pesquisar Pokémon pelo nome">
-            <button class="filter-button">
-                <img src="../assets/filtro.png" alt="Filter" width="30">
-            </button>
+            <img class="icone-pesquisa" src="../assets/assets1.png" alt="">
+            <input type="text" id="pesquisaPokemon" placeholder="Search by name or ID" aria-label="Search a Pokémon by name or ID" autocomplete="off">
         </div>
-        <!-- menu de navegação superior direito -->
+        
         <nav class="menu">
-            <a href="../favorites/favorites.html">
-                <img src="../assets/assets2.png" alt="My Favorites" width="38">
-                My Favorites
-            </a>
-            <a href="#">
-                <img src="../assets/gearicon.png" alt="Settings" width="38">
-                Settings
+            <a class="menu-link" href="../favorites/favorites.html">
+                <img src="../assets/assets2.png" alt="">
+                <span class="menu-texto">Favorites</span>
             </a>
         </nav>
     </header>
-    <!-- conteúdo principal -->
+
     <main>
-        <h1>My Favorites</h1>
+        <div class="barra-titulo">
+            <h1 class="titulo-pagina"><img src="../assets/favorito.png" alt=""> My Favorites</h1>
+            <a class="pilula-vidro" href="../home/index.html">Go back</a>
+        </div>
+
+        <!-- os cards são criados pelo JS -->
         <div id="listaDePokemons" class="lista-pokemons"></div>
+
+        <nav class="paginacao" id="paginacao" aria-label="Pagination" hidden>
+            <div class="paginacao-pontos" id="paginacaoPontos" aria-hidden="true"></div>
+            <div class="paginacao-botoes">
+                <button type="button" id="botaoVoltar"><i class="bi bi-chevron-left" aria-hidden="true"></i> Back</button>
+                <span class="divisor" aria-hidden="true"></span>
+                <button type="button" id="botaoProximo">Next <i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </div>
+        </nav>
+
+        <!-- mensagem de erro (o JS mostra quando algo falha) -->
+        <section id="caixaErro" class="caixa-erro" role="alert" hidden>
+            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+            <p id="textoErro"></p>
+            <button type="button" id="botaoTentarDeNovo" class="pilula-vidro">Try again</button>
+            <a id="linkInicio" class="pilula-vidro" href="../home/index.html" hidden>Go back</a>
+        </section>
     </main>
     <!-- rodapé da página -->
     <footer class="copyright">
@@ -72,8 +88,45 @@
             <div class="social-text">Our official social networks</div>
         </div>
     </footer>
-    <!-- importação de js script -->
-    <script src="../js/pokedex.js"></script>
-<script src="../js/favoritos.js"></script>
+    
+    <!-- Aviso de falha: se o JS NÃO carregar, mostra uma mensagem em vez de carregar para sempre -->
+    <script>
+        var MENSAGEM_ARQUIVOS_LOCAL = "You opened the file directly in the browser (file://), but JS modules don't work that way. Open the project using local server. Example, by using the Live Server extension in VS Code (right-click on `index.html` > Open with Live Server).";
+        var MENSAGEM_ARQUIVOS = "Unable to load the JS files. Check that the JS folder contains the subfolders (components), (data), (pages), (services), and (utils), and open the project's root folder in Live Server.";
+        var MENSAGEM_DEMORA = "The page took too long to load. Press F12 and open the Console to see what the error is.";
+
+        // esconde a tela de carregamento e mostra o erro
+        function avisarFalha(mensagem) {
+            document.getElementById("loader").classList.add("some");
+            document.getElementById("textoErro").textContent = mensagem;
+            document.getElementById("botaoTentarDeNovo").hidden = true;
+            document.querySelector("main").classList.add("com-erro");
+            document.getElementById("caixaErro").hidden = false;
+        }
+
+        // chama quando o arquivo .js não consegue ser carregado
+        function aoFalharScript() {
+            if (window.location.protocol === "file:") {
+                avisarFalha(MENSAGEM_ARQUIVO_LOCAL); 
+            } else {
+                avisarFalha(MENSAGEM_ARQUIVOS);
+            }
+        }
+
+        // Abrir o arquivo direto (file://) bloqueia os módulos, então já avisa
+        if (window.location.protocol === "file:") {
+            aoFalharScript();
+        }
+
+        // Se depois de 8s ainda estiver carregando, algo deu errado
+        setTimeout(function () {
+            if (!document.getElementById("loader").classList.contains("some")) {
+                avisarFalha(MENSAGEM_DEMORA);
+            }
+        }, 8000);
+    </script>
+
+    <!-- type="module" permite usar import/export no JS -->
+    <script type="module" src="../js/pages/favoritos.js" onerror="aoFalharScript()"></script>
 </body>
 </html>

@@ -3,6 +3,11 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
 @keyframes piscar-vermelho {
     0%, 100% { background: var(--cor-barra); }
     50% { background: var(--cor-erro); }
@@ -16,8 +21,10 @@
     --cor-texto-escuro: #1d1429;
     --cor-erro: #e5384f;
     --cor-favorito: #ffd43b;
+    --cor-borda-roxa: #7b5ca3;
     --cor-barra: rgba(80, 50, 100, 0.45);
     --cor-barra-forte: rgba(80, 50, 100, 0.7);
+    --desfoque: blur(8px);
 
     --vidro: rgba(52, 34, 66, 0.46);
     --vidro-forte: rgba(52, 34, 66, 0.66);
@@ -26,6 +33,7 @@
 
     --raio: 16px;
     --raio-cabecalho: 24px;
+    --sombra-card: 0 6px 18px rgba(0, 0, 0, 0.18);
 
     --margem-lateral: clamp(16px, 3.2vw, 46px);
     --transicao: 0.2s ease;
@@ -66,9 +74,9 @@
 /* Estilos do corpo do body */
 body {
     font-family: var(--fonte-principal);
-    color: var(--cor-braca);
+    color: var(--cor-branca);
     background-color: #b9a0ce;
-    background-image: url("../assets/image-3.png");
+    background-image: url("../assets/image-1.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -99,7 +107,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     background-color: var(--cor-primaria);
-    transition: opacity 0.5s ease; visibility: 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .loader.some {
@@ -128,7 +136,7 @@ h1, h2, h3 {
     text-align: center;
 }
 
-.caixa-erro [hidden] {
+.caixa-erro[hidden] {
     display: none;
 }
 
@@ -141,56 +149,143 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* save cabecalho */
 .cabecalho {
-    background: linear-gradient(to right, #BDA3D8, #AA90C9, #CAB6E2);
+    position: relative;
+    z-index: 10;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "logo busca menu";
+    gap: 24px;
+    padding: 14px var(--margem-lateral);
+    background: linear-gradient(to right, #bda3d8, #aa90c9, #cab6e2);
     background-size: 300% 100%;
     animation: mover-gradiente 6s ease infinite;
+    border-bottom: 4px solid var(--cor-borda-roxa);
+    border-radius: 0 0 var(--raio-cabecalho) var(--raio-cabecalho);
+    box-shadow: 0 6px 18px rgba(60, 30, 90, 0.25);
+}
+
+.logopokenie {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: var(--raio);
+    background: rgba(255, 255, 255, 0.28);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.logopokenie a {
+    display: flex;
+}
+
+.logopokenie:hover {
+    transform: scale(1.06);
+}
+
+.barra-de-pesquisa {
+    grid-area: busca;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    border-radius: var(--raio);
+    background: var(--cor-barra);
+    transition: box-shadow var(--transicao);
+}
+
+.barra-de-pesquisa:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55);
+}
+
+.barra-de-pesquisa.erro {
+    animation: piscar-vermelho 0.20s ease-in-out 3;
+}
+
+.barra-de-pesquisa input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 22px 0 54px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--cor-branca);
+    font-family: var(--fonte-principal);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.barra-de-pesquisa input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.icone-pesquisa {
+    position: absolute;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    pointer-events: none;
 }
 
 .menu {
+    grid-area: menu;
     display: flex;
     justify-content: flex-end;
 }
 
-/* Estilos de navegação */
-nav a {
-    text-decoration: none;
-    font-family: var(--fonte-secundaria);
-    color: var(--cor-secundaria);
-    font-size: 20px;
-}
-
-/* Efeito especial ao passar o mouse sobre os links */
-nav a:hover {
-    color: var(--cor-primaria);
-}
-
-/* Elementos do ícone */
-.icon {
-    position: absolute;
-    left: 30px;
+.menu-link {
     display: flex;
     align-items: center;
+    gap: 14px;
+    height: 56px;
+    padding: 0 26px 0 14px;
+    border-radius: var(--raio);
+    background: var(--cor-barra);
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-family: var(--fonte-secundaria);
+    font-size: 20px;
+    font-weight: 700;
+    transition: background var(--transicao);
 }
 
-.icon img {
-    height: 80px;   
+.menu-link:hover {
+    background: var(--cor-barra-forte);
+}
+
+.menu-link img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
 }
 
 /* rodapé|footer */
 .copyright {
-    font-weight: bold;
-    color: var(--cor-branca);
-    background: linear-gradient(to right, #CAB6E2, #AA90C9, #BDA3D8);
-    background-size: 300% 100%;
-    animation: mover-gradiente 6s ease infinite;
     margin-top: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    padding: 15px 40px;
-    width: 100%; 
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 14px var(--margem-lateral);
+    background: linear-gradient(to right, #cab6e2, #aa90c9, #bda3d8);
+    background-size: 300% 100%;
+    animation: mover-gradiente 6s ease infinite;
+    border-top: 4px solid var(--cor-borda-roxa);
+    border-radius: var(--raio-cabecalho) var(--raio-cabecalho) 0 0;
+    color: var(--cor-texto-escuro);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 /* lado esquerdo do footer(logo e textos) */
@@ -198,16 +293,22 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 15px;
+    padding: 8px 26px 8px 12px;
+    border-radius: var(--raio);
+    background: rgba(255, 255, 255, 0.28);
 }
 
 .footer-left-texts {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .affiliation {
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: 600;
 }
 
 /* lado direito do footer (redes sociais) */
@@ -215,17 +316,21 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    padding: 10px 24px;
+    border-radius: var(--raio);
+    background: rgba(255, 255, 255, 0.28);
 }
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 18px;
 }
 
 .social-icons a {
-    color: var(--cor-branca);
-    font-size: 24px;
+    color: var(--cor-texto-escuro);
+    font-size: 26px;
+    transition: opacity var(--transicao);
 }
 
 .social-icons a:hover {
@@ -233,85 +338,420 @@ nav a:hover {
 }
 
 .social-text {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.pilula-vidro {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 22px;
+    border: 0;
+    border-radius: var(--raio);
+    background: var(--vidro);
     color: var(--cor-branca);
-    font-size: 14px;
-    font-family: var(--fonte-principal);
+    font-family: var(--fonte-secundaria);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--transicao);
 }
 
-.logopokenie {
-    width: 150px;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
+.pilula-vidro:hover {
+    background: var(--vidro-forte);
 }
 
-.logopokenie:hover {
-    transform: scale(1.1);
+.pilula-vidro[hidden] {
+    display: none;
+}
+
+.divisor {
+    width: 6px;
+    height: 28px;
+    border-radius: var(--raio);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.icone-tipo {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.icone-tipo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icone-tipo.sem-icone {
+    background-color: var(--cor-do-tipo, #777)
+}
+
+.tipo-water { --cor-do-tipo: var(--tipo-water); }
+.tipo-rock { --cor-do-tipo: var(--tipo-rock); }
+.tipo-psychic { --cor-do-tipo: var(--tipo-psychic); }
+.tipo-poison { --cor-do-tipo: var(--tipo-poison); }
+.tipo-normal { --cor-do-tipo: var(--tipo-normal); }
+.tipo-ice { --cor-do-tipo: var(--tipo-ice); }
+.tipo-ground { --cor-do-tipo: var(--tipo-ground); }
+.tipo-grass { --cor-do-tipo: var(--tipo-grass); }
+.tipo-ghost { --cor-do-tipo: var(--tipo-ghost); }
+.tipo-flying { --cor-do-tipo: var(--tipo-flying); }
+.tipo-fire { --cor-do-tipo: var(--tipo-fire); }
+.tipo-fairy { --cor-do-tipo: var(--tipo-fairy); }
+.tipo-electric { --cor-do-tipo: var(--tipo-electric); }
+.tipo-dragon { --cor-do-tipo: var(--tipo-dragon); }
+.tipo-dark { --cor-do-tipo: var(--tipo-dark); }
+.tipo-bug { --cor-do-tipo:var(--tipo-bug); }
+.tipo-steel { --cor-do-tipo:var(--tipo-steel); }
+.tipo-fighting { --cor-do-tipo: var(--tipo-fighting); }
+
+.sem-imagem {
+    padding: 24px;
+    opacity: 0.6;
+    filter: none !important;
+}
+
+.menu-link:focus-visible, .pilula-vidro:focus-visible {
+    outline: 3px solid var(--cor-branca);
+    outline-offset: 2px;
+}
+
+
+@media (max-width: 960px) {
+    .cabecalho {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "logo menu"
+            "busca busca";
+    }
+
+    .copyright {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .cabecalho {
+        gap: 14px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .logopokenie img {
+        width: 120px;
+    }
+
+    .menu-link {
+        padding: 0 10px;
+    }
+
+    .menu-texto {
+        display: none;
+    }
+
+    .footer-left, .footer-right {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cabecalho,
+    .copyright,
+    .loader img,
+    .barra-de-pesquisa.erro {
+        animation: none;
+    }
+}
+
+@keyframes entrada {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.barra-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.titulo-pagina {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-width: 276px;
+    padding: 12px 30px 12px 22px;
+    border-radius: var(--raio);
+    background: var(--vidro);
+    border: 1px solid var(--vidro-borda);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.titulo-pagina img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 .lista-pokemons {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 24px;
-    padding: 24px;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 20px 16px;
-    background-color: var(--cor-branca);
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    /* animação: o card sobe e a sombra cresce ao passar o mouse */
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    border-radius: var(--raio);
+    background: var(--vidro);
+    border: 1px solid var(--vidro-borda);
+    box-shadow: var(--sombra-card);
+    transition: background var(--transicao);
+}
+
+.card.entrada {
+    animation: entrada 0.5s ease both;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    background: var(--vidro-forte);
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px;
+    border-radius: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-imagem {
+    align-self: center;
+    width: 100%;
+    height: clamp(110px, 11vw, 190px);
+    margin: 6px 0 14px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-imagem {
+    transform: scale(1.06);
+}
+
+.card-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.card-nome {
+    font-size: 18px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
 .card-id {
-    align-self: flex-start;
-    font-size: 14px;
-    color: var(--cor-secundaria);
+    font-size: 16px;
     font-weight: 700;
-}
-
-.card img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-}
-
-.card h2 {
-    font-family: var(--fonte-secundaria);
-    color: var(--cor-primaria);
-    text-transform: capitalize;
-}
-
-.card p {
-    font-size: 14px;
-    color: #444;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .card-tipos {
-    text-transform: capitalize;
+    display: flex;
+    gap: 6px;
+}
+
+.card-bookmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: var(--raio);
+    background: transparent;
+    cursor: pointer;
+    transition: background var(--transicao);
+}
+
+.card-bookmark:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.card-bookmark img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.card-bookmark.favoritado, .card-bookmark.favoritado:hover {
+    background: var(--cor-favorito);
+}
+
+.card-link:focus-visible, .card-bookmark:focus-visible, .paginacao-botoes button:focus-visible {
+    outline: 3px solid var(--cor-branca);
+    outline-offset: 2px;
+}
+
+.mensagem-vazia {
+    grid-column: 1 / -1;
+    padding: 40px 20px;
+    border-radius: var(--raio);
+    background: var(--vidro);
+    border: 1px solid var(--vidro-borda);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.paginacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.paginacao[hidden] {
+    display: none;
+}
+
+.paginacao-pontos {
+    display: flex;
+    gap: 8px;
+    min-height: 10px;
+}
+
+.ponto {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.ponto.ativo {
+    background: var(--cor-branca);
+}
+
+.paginacao-botoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: var(--raio);
+    border: 1px solid var(--vidro-borda);
+}
+
+.paginacao-botoes button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 150px;
+    height: 44px;
+    border: 0;
+    border-radius: var(--raio);
+    background: var(--vidro-claro);
+    color: var(--cor-branca);
+    font-family: var(--fonte-secundaria);
+    font-size: 15px;
     font-weight: 700;
-    color: var(--cor-primaria);
+    cursor: pointer;
+    transition: background var(--transicao);
+}
+
+.paginacao-botoes button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.paginacao-botoes button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+main.com-erro .barra-titulo .pilula-vidro {
+    display: none;
+}
+
+main.com-erro .lista-pokemons, main.com-erro .paginacao {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .lista-pokemons {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 960px) {
+    .lista-pokemons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 600px) {
+    .titulo-pagina {
+        min-width: 0;
+        font-size: 22px;
+    }
+
     .lista-pokemons {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
-    .card img {
-        width: 100px;
-        height: 100px;
+    .card-link {
+        padding: 12px;
+    }
+
+    .card-nome {
+        font-size: 15px;
+    }
+
+    .card-id {
+        font-size: 13px;
+    }
+
+    .card-rodape {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .paginacao-botoes button {
+        min-width: 110px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card.entrada {
+        animation: none;
+    }
+
+    .card-imagem {
+        transition: none;
     }
 }
