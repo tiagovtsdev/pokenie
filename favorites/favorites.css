@@ -29,6 +29,7 @@
     --vidro-borda: rgba(255, 255, 255, 0.22);
     --cor-barra: rgba(80, 50, 110, 0.45);
     --cor-barra-forte: rgba(80, 50, 110, 0.7);
+    --desfoque: blur(8px);
 
     --raio: 16px;
     --raio-cabecalho: 24px;
@@ -137,6 +138,7 @@ h1, h2, h3 {
     background: var(--vidro);
     border: 1px solid var(--vidro-borda);
     text-align: center;
+    backdrop-filter: var(--desfoque);
 }
 
 .caixa-erro[hidden] {
@@ -365,6 +367,7 @@ h1, h2, h3 {
     cursor: pointer;
     box-shadow: inset;
     transition: background var(--transicao);
+    backdrop-filter: var(--desfoque);
 }
 
 .pilula-vidro:hover {
@@ -506,6 +509,7 @@ h1, h2, h3 {
     border: 1px solid var(--vidro-borda);
     font-size: 26px;
     font-weight: 700;
+    backdrop-filter: var(--desfoque);
 }
 
 .titulo-pagina img {
@@ -528,6 +532,7 @@ h1, h2, h3 {
     border: 1px solid var(--vidro-borda);
     box-shadow: var(--sombra-card);
     transition: background var(--transicao);
+    backdrop-filter: var(--desfoque);
 }
 
 .card.entrada {
@@ -640,6 +645,7 @@ h1, h2, h3 {
     text-align: center;
     font-size: 18px;
     font-weight: 600;
+    backdrop-filter: var(--desfoque);
 }
 
 /* paginação */
@@ -680,6 +686,7 @@ h1, h2, h3 {
     border-radius: var(--raio);
     border: 1px solid var(--vidro-borda);
     background: var(--vidro);
+    backdrop-filter: var(--desfoque);
 }
 
 .paginacao-botoes button {

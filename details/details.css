@@ -29,6 +29,7 @@
     --vidro-borda: rgba(255, 255, 255, 0.22);
     --cor-barra: rgba(80, 50, 110, 0.45);
     --cor-barra-forte: rgba(80, 50, 110, 0.7);
+    --desfoque: blur(8px);
 
     --raio: 16px;
     --raio-cabecalho: 24px;
@@ -147,6 +148,7 @@ h1, h2, h3 {
     background: var(--vidro);
     border: 1px solid var(--vidro-borda);
     text-align: center;
+    backdrop-filter: var(--desfoque);
 }
 
 .caixa-erro[hidden] {
@@ -366,6 +368,7 @@ h1, h2, h3 {
     text-decoration: none;
     cursor: pointer;
     transition: background var(--transicao);
+    backdrop-filter: var(--desfoque);
 }
 
 .pilula-vidro:hover {
@@ -513,7 +516,7 @@ h1, h2, h3 {
     max-width: 85vw;
     object-fit: contain;
     object-position: right bottom;
-    opacity: 0.55;
+    opacity: 0.30;
     user-select: none;
 }
 
@@ -546,6 +549,7 @@ h1, h2, h3 {
     background: var(--vidro);
     border: 1px solid var(--vidro-borda);
     box-shadow: var(--sombra-card);
+    backdrop-filter: var(--desfoque);
 }
 
 .bloco {
@@ -1083,6 +1087,7 @@ a.evo-no:hover {
     border-radius: var(--raio);
     background: var(--vidro);
     border: 1px solid var(--vidro-borda);
+    backdrop-filter: var(--desfoque);
 }
 
 .nav-seta {
