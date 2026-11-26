@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../favorites/favorites.css">
 </head>
 <body>
+    <!-- tela de carregamento (o JS esconde quando os dados ficam prontos) -->
     <div id="loader" class="loader" role="status" aria-live="polite">
         <img src="../assets/assets5.png" alt="Loading...">
     </div>
@@ -32,7 +33,7 @@
             <img class="icone-pesquisa" src="../assets/assets1.png" alt="">
             <input type="text" id="pesquisaPokemon" placeholder="Search by name or ID" aria-label="Search a Pokémon by name or ID" autocomplete="off">
         </div>
-        
+        <!-- botão de favoritos -->
         <nav class="menu">
             <a class="menu-link" href="../favorites/favorites.html">
                 <img src="../assets/assets2.png" alt="">
@@ -46,10 +47,9 @@
             <h1 class="titulo-pagina"><img src="../assets/favorito.png" alt=""> My Favorites</h1>
             <a class="pilula-vidro" href="../home/index.html">Go back</a>
         </div>
-
         <!-- os cards são criados pelo JS -->
         <div id="listaDePokemons" class="lista-pokemons"></div>
-
+        <!-- paginação (botao de voltar e próximo) -->
         <nav class="paginacao" id="paginacao" aria-label="Pagination" hidden>
             <div class="paginacao-pontos" id="paginacaoPontos" aria-hidden="true"></div>
             <div class="paginacao-botoes">
@@ -58,7 +58,6 @@
                 <button type="button" id="botaoProximo">Next <i class="bi bi-chevron-right" aria-hidden="true"></i></button>
             </div>
         </nav>
-
         <!-- mensagem de erro (o JS mostra quando algo falha) -->
         <section id="caixaErro" class="caixa-erro" role="alert" hidden>
             <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
@@ -89,7 +88,7 @@
         </div>
     </footer>
     
-    <!-- Aviso de falha: se o JS NÃO carregar, mostra uma mensagem em vez de carregar para sempre -->
+    <!-- AVISO DE FALHA: se o JS NÃO carregar, mostra uma mensagem em vez de carregar para sempre -->
     <script>
         var MENSAGEM_ARQUIVOS_LOCAL = "You opened the file directly in the browser (file://), but JS modules don't work that way. Open the project using local server. Example, by using the Live Server extension in VS Code (right-click on `index.html` > Open with Live Server).";
         var MENSAGEM_ARQUIVOS = "Unable to load the JS files. Check that the JS folder contains the subfolders (components), (data), (pages), (services), and (utils), and open the project's root folder in Live Server.";
@@ -113,12 +112,12 @@
             }
         }
 
-        // Abrir o arquivo direto (file://) bloqueia os módulos, então já avisa
+        // abrir o arquivo direto (file://) bloqueia os módulos, então já avisa
         if (window.location.protocol === "file:") {
             aoFalharScript();
         }
 
-        // Se depois de 8s ainda estiver carregando, algo deu errado
+        // se depois de 8s ainda estiver carregando, algo deu errado
         setTimeout(function () {
             if (!document.getElementById("loader").classList.contains("some")) {
                 avisarFalha(MENSAGEM_DEMORA);

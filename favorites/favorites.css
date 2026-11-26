@@ -13,53 +13,56 @@
     50% { background: var(--cor-erro); }
 }
 
-/* Variáveis de cores e fontes */
+/* Variáveis */
 :root {
     --cor-primaria: #5F3B54;
     --cor-secundaria: #8e607d;
     --cor-branca: #FFFFFF;
-    --cor-texto-escuro: #1d1429;
-    --cor-erro: #e5384f;
-    --cor-favorito: #ffd43b;
-    --cor-borda-roxa: #7b5ca3;
-    --cor-barra: rgba(80, 50, 100, 0.45);
-    --cor-barra-forte: rgba(80, 50, 100, 0.7);
-    --desfoque: blur(8px);
+    --cor-texto-escuro: #1D1429;
+    --cor-borda-roxa: #7B5CA3;
+    --cor-erro: #E5384F;
+    --cor-favorito: #FFD43B;
 
     --vidro: rgba(52, 34, 66, 0.46);
     --vidro-forte: rgba(52, 34, 66, 0.66);
     --vidro-claro: rgba(255, 255, 255, 0.14);
     --vidro-borda: rgba(255, 255, 255, 0.22);
+    --cor-barra: rgba(80, 50, 110, 0.45);
+    --cor-barra-forte: rgba(80, 50, 110, 0.7);
 
     --raio: 16px;
     --raio-cabecalho: 24px;
     --sombra-card: 0 6px 18px rgba(0, 0, 0, 0.18);
 
+    /* espaçamento e transicao */
     --margem-lateral: clamp(16px, 3.2vw, 46px);
     --transicao: 0.2s ease;
 
-    --tipo-water: #61a9d7;
-    --tipo-rock: #d7ca9a;
-    --tipo-psychic: #f78180;
-    --tipo-poison: #b362c8;
-    --tipo-normal: #989f9f;
-    --tipo-ice: #7dd1c5;
-    --tipo-ground: #d97d4c;
-    --tipo-grass: #5dbd66;
-    --tipo-ghost: #676bc0;
-    --tipo-flying: #a0bce4;
-    --tipo-fire: #fda64b;
-    --tipo-fairy: #f1a2e6;
-    --tipo-electric: #f4da58;
-    --tipo-dragon: #0971bc;
+    /* cores de cada tipo de pokémon */
+    --tipo-water: #61A9D7;
+    --tipo-rock: #D7CA9A;
+    --tipo-psychic: #F78180;
+    --tipo-poison: #B362C8;
+    --tipo-normal: #989F9F;
+    --tipo-ice: #7DD1C5;
+    --tipo-ground: #D97D4C;
+    --tipo-grass: #5DBD66;
+    --tipo-ghost: #676BC0;
+    --tipo-flying: #A0BCE4;
+    --tipo-fire: #FDA64B;
+    --tipo-fairy: #F1A2E6;
+    --tipo-electric: #F4DA58;
+    --tipo-dragon: #0971BC;
     --tipo-dark: #676679;
-    --tipo-bug: #a1c432;
-    --tipo-steel: #5a8ea2;
-    --tipo-fighting: #e0306a;
+    --tipo-bug: #A1C432;
+    --tipo-steel: #5A8EA2;
+    --tipo-fighting: #E0306A;
 
-    --genero-macho: #0391dc;
-    --genero-femea: #e12777;
+    /* cores do gênero */
+    --genero-macho: #0391DC;
+    --genero-femea: #E12777;
 
+    /* fontes */
     --fonte-principal: "DM Sans", sans-serif;
     --fonte-secundaria: "Bricolage Grotesque", sans-serif;
 }
@@ -71,7 +74,6 @@
     box-sizing: border-box;
 }
 
-/* Estilos do corpo do body */
 body {
     font-family: var(--fonte-principal);
     color: var(--cor-branca);
@@ -93,12 +95,12 @@ main {
     padding: 28px var(--margem-lateral) 36px;
 }
 
-/* títulos gerais */
 h1, h2, h3 {
     font-family: var(--fonte-secundaria);
     color: var(--cor-branca);
 }
 
+/* tela de carregamento */
 .loader {
     position: fixed;
     inset: 0;
@@ -122,6 +124,7 @@ h1, h2, h3 {
     animation: girar 1s linear infinite;
 }
 
+/* caixa de erro */
 .caixa-erro {
     display: flex;
     flex-direction: column;
@@ -149,6 +152,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+/* cabecalho */
 .cabecalho {
     position: relative;
     z-index: 10;
@@ -184,6 +188,7 @@ h1, h2, h3 {
     transform: scale(1.06);
 }
 
+/* barra de pesquisa */
 .barra-de-pesquisa {
     grid-area: busca;
     position: relative;
@@ -199,6 +204,7 @@ h1, h2, h3 {
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55);
 }
 
+/* O JS adiciona a classe "erro" quando nada é encontrado */
 .barra-de-pesquisa.erro {
     animation: piscar-vermelho 0.20s ease-in-out 3;
 }
@@ -230,6 +236,7 @@ h1, h2, h3 {
     pointer-events: none;
 }
 
+/* menu (link de favoritos) */
 .menu {
     grid-area: menu;
     display: flex;
@@ -262,7 +269,7 @@ h1, h2, h3 {
     object-fit: contain;
 }
 
-/* rodapé|footer */
+/* rodapé */
 .copyright {
     margin-top: auto;
     display: flex;
@@ -279,6 +286,7 @@ h1, h2, h3 {
     color: var(--cor-texto-escuro);
 }
 
+/* textos apenas para leitores de tela */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -288,7 +296,6 @@ h1, h2, h3 {
     white-space: nowrap;
 }
 
-/* lado esquerdo do footer(logo e textos) */
 .footer-left {
     display: flex;
     align-items: center;
@@ -311,7 +318,6 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-/* lado direito do footer (redes sociais) */
 .footer-right {
     display: flex;
     flex-direction: column;
@@ -342,6 +348,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+/* botao de (go back) (try again) */
 .pilula-vidro {
     display: inline-flex;
     align-items: center;
@@ -356,6 +363,7 @@ h1, h2, h3 {
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
+    box-shadow: inset;
     transition: background var(--transicao);
 }
 
@@ -424,7 +432,7 @@ h1, h2, h3 {
     outline-offset: 2px;
 }
 
-
+/* responsivo (cabeçalho e rodapé) */
 @media (max-width: 960px) {
     .cabecalho {
         grid-template-columns: auto 1fr;
@@ -463,6 +471,7 @@ h1, h2, h3 {
     }
 }
 
+/* pessoas que preferem menos movimento */
 @media (prefers-reduced-motion: reduce) {
     .cabecalho,
     .copyright,
@@ -477,6 +486,7 @@ h1, h2, h3 {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* barra de titulo */
 .barra-titulo {
     display: flex;
     justify-content: space-between;
@@ -504,6 +514,7 @@ h1, h2, h3 {
     object-fit: contain;
 }
 
+/* cards */
 .lista-pokemons {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -583,6 +594,7 @@ h1, h2, h3 {
     gap: 6px;
 }
 
+/* botão de bookmark (favoritar) */
 .card-bookmark {
     position: absolute;
     top: 10px;
@@ -608,6 +620,7 @@ h1, h2, h3 {
     object-fit: contain;
 }
 
+/* pokémon favoritado */
 .card-bookmark.favoritado, .card-bookmark.favoritado:hover {
     background: var(--cor-favorito);
 }
@@ -617,6 +630,7 @@ h1, h2, h3 {
     outline-offset: 2px;
 }
 
+/* mensagem quando não há nada para mostrar */
 .mensagem-vazia {
     grid-column: 1 / -1;
     padding: 40px 20px;
@@ -628,6 +642,7 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
+/* paginação */
 .paginacao {
     display: flex;
     flex-direction: column;
@@ -664,6 +679,7 @@ h1, h2, h3 {
     padding: 8px;
     border-radius: var(--raio);
     border: 1px solid var(--vidro-borda);
+    background: var(--vidro);
 }
 
 .paginacao-botoes button {
@@ -701,6 +717,7 @@ main.com-erro .lista-pokemons, main.com-erro .paginacao {
     display: none;
 }
 
+/* responsivo (paginas de lista de cards) */
 @media (max-width: 1200px) {
     .lista-pokemons {
         grid-template-columns: repeat(4, minmax(0, 1fr));
