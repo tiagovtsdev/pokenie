@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ad160bf9-ba1c-4390-9e8a-69dbdd75c760" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jailsonsalas-cybersecurity"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/tiagovtsdev/pokenie.git",
+    "accountId": "51447dbf-1dba-4ac6-981a-2e12468fd5ab"
+  }
+}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.418157233204131" />
+      <entry key="MS500" value="2.437296994148053" />
+      <entry key="S2" value="6.744559152269667" />
+      <entry key="S5" value="13.036361922897974" />
+      <entry key="S10" value="19.238766567153586" />
+      <entry key="S30" value="27.045548521078548" />
+      <entry key="S60" value="29.800121967771133" />
+      <entry key="M2" value="31.416509810944923" />
+      <entry key="M5" value="38.575294193583304" />
+      <entry key="M10" value="59.99346283504316" />
+      <entry key="M15" value="77.50869838934923" />
+      <entry key="M30" value="106.13785285330904" />
+      <entry key="H1" value="126.6936570348194" />
+      <entry key="H2" value="139.03633446916336" />
+      <entry key="H4" value="145.80280158354276" />
+      <entry key="D1" value="151.76940793728198" />
+      <entry key="W1" value="152.82342508428152" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.3698533946626483" />
+      <entry key="MS500" value="2.417011485108655" />
+      <entry key="S2" value="6.722156735356046" />
+      <entry key="S5" value="13.016741542443775" />
+      <entry key="S10" value="19.223588576071148" />
+      <entry key="S30" value="27.038194093669247" />
+      <entry key="S60" value="29.796035795720627" />
+      <entry key="M2" value="31.414337465362262" />
+      <entry key="M5" value="38.57393712489352" />
+      <entry key="M10" value="59.99199859382172" />
+      <entry key="M15" value="77.50729149078398" />
+      <entry key="M30" value="106.13679672519794" />
+      <entry key="H1" value="126.69300221806265" />
+      <entry key="H2" value="139.03596898672095" />
+      <entry key="H4" value="145.80260840320665" />
+      <entry key="D1" value="151.7693742061328" />
+      <entry key="W1" value="152.82342022681974" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3MfFqMWkUn1nLjrANXWsvGpAZOp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ad160bf9-ba1c-4390-9e8a-69dbdd75c760" name="Changes" comment="" />
+      <created>1795733905560</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1795733905560</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
